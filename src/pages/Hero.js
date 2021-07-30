@@ -1,6 +1,6 @@
 import React from 'react'
-import './hero.css';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import './Hero.css';
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 const Hero = ({handleLogout}) => {
     
     return (
