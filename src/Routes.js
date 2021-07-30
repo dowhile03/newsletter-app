@@ -8,6 +8,8 @@ import Signup from "./pages/Signup";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Hero from "./pages/Hero";
 import CategoryList from "./components/Categories/CategoryList";
+import Admin from "./pages/Admin";
+import AdminSection from "./pages/AdminSection";
 
 const Routes = () => {
   return (
@@ -19,11 +21,14 @@ const Routes = () => {
           <Route path="/login" exact component={Login} />
           <Route path="/forgetpassword" exact component={ForgetPassword} />
           <Route path="/finance" exact component={CategoryList} />
-     
+          <Route path="/Admin" exact component={Admin} />
+    
           <ProtectedRoutes path="/:displayName/:uid" exact>
             <Hero />
           </ProtectedRoutes>
-         
+          <ProtectedRoutes path="/adminsection" exact>
+            < AdminSection/>
+          </ProtectedRoutes>
         </Switch>
       </BrowserRouter>
     </AuthProvider>
