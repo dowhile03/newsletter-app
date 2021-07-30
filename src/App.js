@@ -1,8 +1,8 @@
-import './App.css';
-import fire from "./config/fire";
 import React,{useEffect,useState} from 'react';
-import Login from './Login';
-import Hero from'./hero';
+import Classes from './App.module.css';
+import fire from "./config/fire";
+import Login from './/components/Login';
+import Hero from'./components/hero';
 
 function App() {
   const [user,setUser]=useState('');
@@ -43,7 +43,7 @@ function App() {
     });
   };
 
-  const handleSignup=()=>
+  const handleSignup=() =>
   {
     clearErrors();
     fire.auth().createUserWithEmailAndPassword(email,password)
@@ -88,7 +88,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={Classes.App}>
       {user ?(
         <Hero handleLogout={handleLogout}/>
       ):(

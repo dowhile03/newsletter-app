@@ -1,13 +1,13 @@
 import React from 'react'
-import './Login.css';
+import Classes from './Login.module.css';
 
 
 const Login = (props) => {
     const {email,setEmail,password,setPassword,handleLogin,handleSignup,hasAccount,emailError,
         setHasAccount,passwordError}=props;
     return (
-        <section className="login">
-            <div className="loginContainer">
+        <section className={Classes.login}>
+            <div className={Classes.loginContainer}>
                 {!hasAccount?(<center>SIGNUP</center>):(<center>SIGNIN</center>)}
                 <label>Username</label>
                 <input type="text"  
@@ -16,7 +16,7 @@ const Login = (props) => {
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
                 />
-                <p className="errorMsg">{emailError}</p>
+                <p className={Classes.errorMsg}>{emailError}</p>
                 <label>Password</label>
                 <input type="password"  
                 autoFocus 
@@ -24,8 +24,8 @@ const Login = (props) => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
-                <p className="errorMsg">{passwordError}</p>
-                <div className="btnContainer">
+                <p className={Classes.errorMsg}>{passwordError}</p>
+                <div className={Classes.btnContainer}>
                 {hasAccount ? (
                     <>
                     <button onClick={handleLogin}>Signin</button>
