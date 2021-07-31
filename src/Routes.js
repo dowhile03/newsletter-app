@@ -20,7 +20,6 @@ const Routes = () => {
           <Route path="/signup" exact component={Signup} />
           <Route path="/login" exact component={Login} />
           <Route path="/forgetpassword" exact component={ForgetPassword} />
-          <Route path="/finance" exact component={CategoryList} />
           <Route path="/Admin" exact component={Admin} />
     
           <ProtectedRoutes path="/:displayName/:uid" exact>
@@ -28,6 +27,9 @@ const Routes = () => {
           </ProtectedRoutes>
           <ProtectedRoutes path="/adminsection" exact>
             < AdminSection/>
+          </ProtectedRoutes>
+          <ProtectedRoutes path="/:displayName/:uid/:categoryId/:category" exact>
+        <CategoryList/>
           </ProtectedRoutes>
         </Switch>
       </BrowserRouter>
