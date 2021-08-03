@@ -13,7 +13,7 @@ const Signup = () => {
 
   const handleChange = (e) => {
     e.preventDefault()
-    if(password != confirmPassword) {
+    if(password !== confirmPassword) {
       alert("Password do not match");
       setPassword("")
       setConfirmPassword("")

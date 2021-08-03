@@ -26,19 +26,19 @@ const Routes = () => {
           <Route path="/forgetpassword" exact component={ForgetPassword} />
           <Route path="/Admin" exact component={Admin} />
           <AdminProtectedRoute path="/:id/:cat/addnewsletter" exact >
-            < AddNewsletter/>
+            <AddNewsletter/>
           </AdminProtectedRoute>
           <ProtectedRoutes path="/:displayName/:uid" exact>
             <Hero />
           </ProtectedRoutes>
           <AdminProtectedRoute path="/addcategory" exact>
-            < AddCategory/>
+            <AddCategory/>
           </AdminProtectedRoute>
           <AdminProtectedRoute path="/addnewsletter/:category" exact >
-            < AddNewsletter/>
+            <AddNewsletter/>
           </AdminProtectedRoute>
             <AdminProtectedRoute path="/adminsection" exact >
-            < AdminSection/>
+            <AdminSection/>
           </AdminProtectedRoute>
           
           <ProtectedRoutes path="/:displayName/:uid/:categoryId/:category" exact>

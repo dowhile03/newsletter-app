@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Classes from "./CategoriesCard.module.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../../Firebase";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 
 const CategoriesCard = () => {
@@ -44,7 +44,7 @@ const CategoriesCard = () => {
                   <div className={Classes.content}>
                     <h6 className={Classes.category}>category</h6>
                     <h4 className={Classes.title}>
-                      <a href="#">{item.catItem.cat}</a>
+                    {item.catItem.cat}
                     </h4>
                     <p className={Classes.description}>
                       {item.catItem.description}
