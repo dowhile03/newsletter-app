@@ -1,8 +1,7 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
 import classes from "./Signup.module.css";
 import { auth } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
-import { AuthContext } from "../AuthProvider";
 
 const Login = () => {
   let history = useHistory();
@@ -18,7 +17,6 @@ const Login = () => {
         var user = userCredential.user;
         var uid = user.uid;
         var displayName = user.displayName;
-        console.log(user.displayName);
         var isVerified = user.emailVerified;
         if (isVerified) {
           history.push(`/${displayName}/${uid}`);

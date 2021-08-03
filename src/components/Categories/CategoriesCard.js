@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Classes from "./CategoriesCard.module.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../../Firebase";
-import { Link, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 
 const CategoriesCard = () => {
+  const history = useHistory();
     const params = useParams();
   const [category, setCategory] = useState([]);
 
@@ -30,13 +31,16 @@ const CategoriesCard = () => {
               className="col-sm-4"
               style={{ marginTop: "30px" }}
               >
-              <Link to={`/${params.displayName}/${params.uid}/${item.id}/${item.catItem.link}`}>
               <div className={Classes["card-big-shadow"]}>
+                
                 <div
                   className={`${Classes.card} ${Classes["card-just-text"]}`}
                   style={{ backgroundColor: `${item.catItem.color}` }}
                   data-radius="none"
                 >
+                  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>
+              <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${params.displayName}/${params.uid}/${item.id}/${item.catItem.link}`)}}>Newsletters</button>
+              
                   <div className={Classes.content}>
                     <h6 className={Classes.category}>category</h6>
                     <h4 className={Classes.title}>
@@ -48,7 +52,6 @@ const CategoriesCard = () => {
                   </div>
                 </div>
               </div>
-              </Link>
             </div>
 
           ))}

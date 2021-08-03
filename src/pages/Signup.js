@@ -9,20 +9,25 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault()
-
+    if(password != confirmPassword) {
+      alert("Password do not match");
+      setPassword("")
+      setConfirmPassword("")
+    }
   
-
-    auth
+else
+    {auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         if (auth.currentUser != null) {
           auth.currentUser.updateProfile({
              displayName: username
          }).then(function () {
-             console.log("Updated");
+             console.log("Updated");  
          }, function (error) {
              console.log("Error happened");
          });
@@ -51,12 +56,10 @@ const Signup = () => {
         var errorMessage = error.message;
         alert(errorMessage);
       });
-
-     
-
+    setConfirmPassword("");
     setUsername("");
     setEmail("");
-    setPassword("");
+    setPassword("");}
   };
 
   return (
@@ -88,6 +91,15 @@ const Signup = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
+            required
+          />
+          <br />
+          <label>Confirm Password</label>
+          <br />
+          <input
+            type="password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
             required
           />
           <br />
