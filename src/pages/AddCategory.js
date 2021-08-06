@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import CategoriesCard from '../components/Categories/CategoriesCard';
 import { db, auth } from '../Firebase';
 
@@ -9,7 +9,6 @@ const AddCategory = () => {
     const [description, setDescription] = useState("");
     const [color, setColor] = useState("");
     const [linkAddress, setLinkAddress] = useState("");
-
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -43,8 +42,10 @@ const AddCategory = () => {
 
     return (
        <div>
-        <h1>Admin section</h1>
-        <button onClick={logoutHandler}>Logout</button>
+       <div className="mt-4 mb-4 d-flex">
+       <h1>Admin section</h1>
+        <button onClick={logoutHandler} className="btn btn-primary float-right" >Logout</button>
+       </div>
 <br /> <br />
 <form className="container" onSubmit={submitHandler}>
 <div className="mb-3">
@@ -67,9 +68,7 @@ const AddCategory = () => {
 <button type="submit" className="btn btn-primary">Submit</button>
 </form>
 <CategoriesCard/>
-
-
-       </div>
+</div>
     )
 }
 

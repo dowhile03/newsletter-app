@@ -22,7 +22,7 @@ const Hero = () => {
         <section className="hero">
             <nav>
                 <h2>WELCOME USER</h2>
-                <button onClick={logoutHandler}>Logout</button>
+                <button onClick={logoutHandler} className="btn btn-primary">Logout</button>
             </nav>
           <CategoriesCard/>
         </section>

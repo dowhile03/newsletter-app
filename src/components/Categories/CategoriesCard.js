@@ -3,12 +3,32 @@ import Classes from "./CategoriesCard.module.css";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../../Firebase";
 import { useHistory, useParams } from "react-router-dom";
+import Search from "../Search";
 
 
 const CategoriesCard = () => {
   const history = useHistory();
     const params = useParams();
   const [category, setCategory] = useState([]);
+  const [search, setSearch] = useState('')
+
+  function myFunction(e) {
+  
+    var  ul, li, a, i, txtValue;
+    setSearch(e.target.value);
+    let filter  = search.toUpperCase(); 
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("div")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 
   useEffect(() => {
     db.collection("categories").onSnapshot((snapshot) => {
@@ -23,10 +43,12 @@ const CategoriesCard = () => {
 
   return (
     <div>
+<Search placeholder={"Enter the category to search"}  onChange={myFunction} />
       <div className="container bootstrap snippets bootdeys">
-        <div className="row">
+        <ul className="row list-unstyled" id="myUL">
           {category.map((item) => (
-              <div
+            
+              <li
               key={item.id}
               className="col-sm-4"
               style={{ marginTop: "30px" }}
@@ -38,12 +60,12 @@ const CategoriesCard = () => {
                   style={{ backgroundColor: `${item.catItem.color}` }}
                   data-radius="none"
                 >
-                  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>
+                  { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
               <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${params.displayName}/${params.uid}/${item.id}/${item.catItem.link}`)}}>Newsletters</button>
               
                   <div className={Classes.content}>
                     <h6 className={Classes.category}>category</h6>
-                    <h4 className={Classes.title}>
+                    <h4 className={Classes.title} >
                     {item.catItem.cat}
                     </h4>
                     <p className={Classes.description}>
@@ -52,10 +74,10 @@ const CategoriesCard = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
+            </li>
+            
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
