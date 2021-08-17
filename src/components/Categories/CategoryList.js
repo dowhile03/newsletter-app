@@ -19,10 +19,12 @@ const CategoryList = () => {
           }))
         );
       });
-  }, []);
+  }, [params.categoryId]);
 
   return (
     <div>
+    <h2>Top rated Newsletters</h2>
+    <hr />
       <div className="col-md-10 ">
         <div className="row ">
         {newsletter.map((letter) => (
@@ -39,35 +41,23 @@ const CategoryList = () => {
                   </div>
                   <div className="row align-items-center mb-2 d-flex">
                     <div className="col-8">
-                      <h2 className="d-flex align-items-center mb-0">3,243</h2>
+                      <h6 className="d-flex align-items-center mb-0">Price -  3,243</h6>
                     </div>
                     <div className="col-4 text-right">
                       <span>
-                        12.5% <i className="fa fa-arrow-up"></i>
+                        likes-5 <i className="fa fa-arrow-up"></i>
                       </span>
                     </div>
                   </div>
-                  <div
-                    className="progress mt-1 "
-                    data-height="8"
-                    style={{ height: "8px" }}
-                  >
-                    <div
-                      className="progress-bar l-bg-cyan"
-                      role="progressbar"
-                      data-width="25%"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style={{ width: "25%" }}
-                    ></div>
-                  </div>
+                
                 </div>
               </div>
               </div>
               ))}
-        </div>
-      </div>
+              </div>
+              </div>
+              <hr />
+             <h6> category 2 newsletters </h6>
     </div>
   );
 };

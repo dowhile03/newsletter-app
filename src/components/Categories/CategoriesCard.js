@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Classes from "./CategoriesCard.module.css";
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../../Firebase";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Search from "../Search";
+import '../TrendingCards.css'
 
 
 const CategoriesCard = () => {
@@ -41,6 +40,8 @@ const CategoriesCard = () => {
     });
   }, []);
 
+
+
   return (
     <div>
 <Search placeholder={"Enter the category to search"}  onChange={myFunction} />
@@ -48,34 +49,33 @@ const CategoriesCard = () => {
         <ul className="row list-unstyled" id="myUL">
           {category.map((item) => (
             
-              <li
-              key={item.id}
-              className="col-sm-4"
-              style={{ marginTop: "30px" }}
-              >
-              <div className={Classes["card-big-shadow"]}>
-                
-                <div
-                  className={`${Classes.card} ${Classes["card-just-text"]}`}
-                  style={{ backgroundColor: `${item.catItem.color}` }}
-                  data-radius="none"
-                >
-                  { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
-              <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${params.displayName}/${params.uid}/${item.id}/${item.catItem.link}`)}}>Newsletters</button>
+            <li
+            key={item.id}
+            className="col-sm-4"
+            style={{ marginTop: "30px" }}
+            >
+            { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
+            <div style={{fontSize:"1.5rem",color:"white"}} id="emptyLike">
+            <i className="far fa-heart"></i>
+            </div>
+            <div style={{fontSize:"1.5vw",color:"white",display:"none"}} id="filledLike">
+            <i className="fas fa-heart"></i>
+            </div>
+              <div class="cards-list">
               
-                  <div className={Classes.content}>
-                    <h6 className={Classes.category}>category</h6>
-                    <h4 className={Classes.title} >
-                    {item.catItem.cat}
-                    </h4>
-                    <p className={Classes.description}>
-                      {item.catItem.description}
-                    </p>
-                  </div>
+              <Link style={{textDecoration:"none"}} to = {`/${item.id}/${item.catItem.link}`}>
+              <div class="card 1">
+                <div class="card_image"> <img src={item.catItem.imgLink} /> </div>
+                <div class="card_title title-white">
+                <p style={{background:"black"}}>{item.catItem.cat} 
+               
+                </p>
                 </div>
-              </div>
-            </li>
-            
+                </div>
+                </Link>
+                  </div>
+                  </li>
+                  
           ))}
         </ul>
       </div>

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import { useHistory, useParams } from 'react-router-dom';
-import CategoriesCard from '../components/Categories/CategoriesCard';
-import { db, auth } from '../Firebase';
+import { useHistory } from 'react-router-dom';
+import CategoriesCard from '../../components/Categories/CategoriesCard';
+import { db, auth } from '../../Firebase';
 
 const AddCategory = () => {
     const history = useHistory()
@@ -15,7 +15,7 @@ const AddCategory = () => {
         db.collection('categories').add({
             cat:category,
             description:description,
-            color:color,
+            imgLink:color,
             link:linkAddress
         })
         .then(() =>{ alert("done!")
@@ -41,7 +41,7 @@ const AddCategory = () => {
     }
 
     return (
-       <div>
+       <div className="text-white">
        <div className="mt-4 mb-4 d-flex">
        <h1>Admin section</h1>
         <button onClick={logoutHandler} className="btn btn-primary float-right" >Logout</button>
@@ -57,11 +57,11 @@ const AddCategory = () => {
   <input type="text" className="form-control" value={description} onChange={(e) => setDescription(e.target.value)}></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="color" className="form-label">color</label>
+  <label htmlFor="color" className="form-label">imageLink</label>
   <input type="text" className="form-control" value={color} onChange={(e) => setColor(e.target.value)}></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="address" className="form-label">link address</label>
+  <label htmlFor="address" className="form-label">address-bar link name</label>
   <input type="text" className="form-control" value={linkAddress} onChange={(e) => setLinkAddress(e.target.value)} ></input>
 </div>
 

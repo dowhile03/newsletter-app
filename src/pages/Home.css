@@ -1,0 +1,92 @@
+
+
+.horizontal_slider {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    padding: 2vw;
+    box-sizing: border-box;
+}
+
+/*this is for chrome / firefox/ opera and safari*/
+.horizontal_slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* for ms*/
+.horizontal_slider {
+    -ms-overflow-style: none;
+}
+
+.slider_container {
+    display: block;
+    white-space: nowrap;
+}
+
+.item {
+    margin-top: 5vw;
+    border-radius: 30px;
+    display: inline-block;
+    margin-right: 10vw;
+    background-color: rgba(255, 255, 255, 0.233);
+}
+
+.item img {
+    border-radius:50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    padding: 0.6rem;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .searchbar {
+      float: right;
+      background-color: transparent;
+      color: white;
+      padding: 6px 10px;
+      width: 30%;
+      border: none;
+      margin-top: 1px;
+      margin-right: 8px;
+      font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      /* border-bottom: white solid 2px; */
+      transition: 0.3s;;
+  }
+  
+  .searchbar::placeholder {
+      color: white;
+      font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      /* transition: 0.2s; */
+  }
+  
+  .searchbar:focus {
+      width: 50%;
+      font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+      font-size: 1em;
+      font-weight: bold;
+      transition: 0.3s;
+      /* Stops the input box from inheriting the styling from the inputs on the request form */
+      border-bottom: white solid 2px;
+      outline: none;
+  }
+  
+  .btn-search {
+      cursor: pointer;
+      color: white;
+      text-decoration: none !important;
+      font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+      font-size: 1.5em;
+      padding-top: 5px;
+
+  }

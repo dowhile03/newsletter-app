@@ -8,11 +8,13 @@ import Signup from "./pages/Signup";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Hero from "./pages/Hero";
 import CategoryList from "./components/Categories/CategoryList";
-import Admin from "./pages/Admin";
-import AdminSection from "./pages/AdminSection";
+import Admin from "./pages/admin/Admin";
+import AdminSection from "./pages/admin/AdminSection";
 import AdminProtectedRoute from "./AdminProtectedRoute";
-import AddNewsletter from "./pages/AddNewsletter";
-import AddCategory from "./pages/AddCategory";
+import AddNewsletter from "./pages/admin/AddNewsletter";
+import AddCategory from "./pages/admin/AddCategory";
+import AddTrending from "./pages/admin/AddTrending";
+
 
 
 const Routes = () => {
@@ -25,12 +27,17 @@ const Routes = () => {
           <Route path="/login" exact component={Login} />
           <Route path="/forgetpassword" exact component={ForgetPassword} />
           <Route path="/Admin" exact component={Admin} />
+          <Route path="/newsletter/categories" exact component = {Hero} />
+          <Route path="/:categoryId/:category" exact component={CategoryList}/>
+
+          <AdminProtectedRoute path="/addtrending" exact>
+          <AddTrending/>
+          </AdminProtectedRoute>
+          
           <AdminProtectedRoute path="/:id/:cat/addnewsletter" exact >
+
             <AddNewsletter/>
           </AdminProtectedRoute>
-          <ProtectedRoutes path="/:displayName/:uid" exact>
-            <Hero />
-          </ProtectedRoutes>
           <AdminProtectedRoute path="/addcategory" exact>
             <AddCategory/>
           </AdminProtectedRoute>
@@ -41,9 +48,6 @@ const Routes = () => {
             <AdminSection/>
           </AdminProtectedRoute>
           
-          <ProtectedRoutes path="/:displayName/:uid/:categoryId/:category" exact>
-        <CategoryList/>
-          </ProtectedRoutes>
         </Switch>
       </BrowserRouter>
     </AuthProvider>
