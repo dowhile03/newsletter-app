@@ -19,7 +19,7 @@ const Login = () => {
         var displayName = user.displayName;
         var isVerified = user.emailVerified;
         if (isVerified) {
-          history.push(`/${displayName}/${uid}`);
+          history.push(`/newsletter/categories/${uid}`);
         } else {
           alert("Your Email is not verified");
         }

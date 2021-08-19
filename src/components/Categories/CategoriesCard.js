@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../Firebase";
+import { auth, db } from "../../Firebase";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Search from "../Search";
 import '../TrendingCards.css'
@@ -40,10 +40,46 @@ const CategoriesCard = () => {
     });
   }, []);
 
+const addToFav = () => {
+ auth.onAuthStateChanged((user) => {
+     if(!user){
+       history.push("/login")
+     }
+     else {
+       console.log(user);
+      db.collection('users-data').doc(`${user.uid}`).set({
+        username:auth.currentUser.displayName,
+        Email:auth.currentUser.email,
+        fav:2,
+        bk:5
+      }).then(()=> {
+        document.getElementById("emptyLike").style.display = "none"
+        document.getElementById("filledLike").style.display = "block"
+      })
+     }
+ }); 
 
+}
+
+const logoutHandler = (e) => {
+  e.preventDefault();
+  auth
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      history.push("/");
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
 
   return (
     <div>
+  {auth.currentUser && (
+    <button type="button" className="btn btn-secondary m-5" onClick={logoutHandler}>Logout</button>
+  )}
+
 <Search placeholder={"Enter the category to search"}  onChange={myFunction} />
       <div className="container bootstrap snippets bootdeys">
         <ul className="row list-unstyled" id="myUL">
@@ -55,18 +91,18 @@ const CategoriesCard = () => {
             style={{ marginTop: "30px" }}
             >
             { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
-            <div style={{fontSize:"1.5rem",color:"white"}} id="emptyLike">
+            <div style={{fontSize:"1.5rem",color:"white"}} onClick={addToFav} id="emptyLike">
             <i className="far fa-heart"></i>
             </div>
             <div style={{fontSize:"1.5vw",color:"white",display:"none"}} id="filledLike">
             <i className="fas fa-heart"></i>
             </div>
-              <div class="cards-list">
+              <div className="cards-list">
               
               <Link style={{textDecoration:"none"}} to = {`/${item.id}/${item.catItem.link}`}>
-              <div class="card 1">
-                <div class="card_image"> <img src={item.catItem.imgLink} /> </div>
-                <div class="card_title title-white">
+              <div className="card 1">
+                <div className="card_image"> <img src={item.catItem.imgLink} /> </div>
+                <div className="card_title title-white">
                 <p style={{background:"black"}}>{item.catItem.cat} 
                
                 </p>

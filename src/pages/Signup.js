@@ -35,7 +35,7 @@ else
         var user = userCredential.user;
         if (user) {
          
-          db.collection("users-data").add({
+          db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
               Email: email,
               username:username
           }).then(() => {

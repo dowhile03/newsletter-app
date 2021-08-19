@@ -30,6 +30,9 @@ const Routes = () => {
           <Route path="/newsletter/categories" exact component = {Hero} />
           <Route path="/:categoryId/:category" exact component={CategoryList}/>
 
+          <ProtectedRoutes path="/newsletter/categories/:uid" exact>
+          <Hero/>
+          </ProtectedRoutes>
           <AdminProtectedRoute path="/addtrending" exact>
           <AddTrending/>
           </AdminProtectedRoute>

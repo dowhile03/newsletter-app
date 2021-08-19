@@ -22,13 +22,13 @@ const TrendingCards = () => {
     <ul className="row list-unstyled">
     {trendingCards.map((item) => (
       <li className="col-sm-4" key={item.id}>
-      <div class="cards-list">
-        <div class="card 1">
-          <div class="card_image">
+      <div className="cards-list">
+        <div className="card 1">
+          <div className="card_image">
             {" "}
             <img src={item.trenItem.link} alt="img" />{" "}
           </div>
-          <div class="card_title title-white">
+          <div className="card_title title-white">
             <p style={{background:"black",fontSize:"large"}}>{item.trenItem.name} - by {item.trenItem.auther} </p>
           </div>
         </div>
