@@ -3,10 +3,24 @@ import './Hero.css';
 import CategoriesCard from "../components/Categories/CategoriesCard"
 import Login from './Login';
 import Signup from './Signup';
+import { auth } from '../Firebase';
+import { useHistory } from 'react-router-dom';
 
 const Hero = () => {   
 const [modalShow, setModalShow] = useState(false);
+const history = useHistory()
 const [signup, setSignUp] = useState(false);
+const favouriteHandler = () => {
+  auth.onAuthStateChanged((user) => {
+    if(!user){
+     setModalShow(true)
+    }
+    else {
+        history.push('/favourites')
+    }
+  })
+
+}
     return (
         <section className="hero">
             <nav>
@@ -20,7 +34,7 @@ const [signup, setSignUp] = useState(false);
             <button className="favBtn mx-2" onClick={() => setSignUp(true)}>Signup</button>
             </div>
             <div className="p-5">
-            <button className="favBtn">Favourites</button>
+            <button className="favBtn" onClick={favouriteHandler}>Favourites</button>
             </div>
            
             </nav>
