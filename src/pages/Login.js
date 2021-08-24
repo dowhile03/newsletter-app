@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import classes from "./Signup.module.css";
+import { Modal, Button, Form } from "react-bootstrap";
 import { auth } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
-
-const Login = () => {
+const Login1 = (props) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -31,43 +29,49 @@ const Login = () => {
   };
 
   return (
-    <div className={classes.mainL}>
-      <div className={classes.container}>
-        <h1>Log In</h1>
-        <form onSubmit={handleChange}>
-          <label>Email Address</label>
-          <br />
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            required
-          />
-          <br />
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-          />
-          <br />
-          <button type="submit">Log In</button> <br /> <br />
-          <Link
-            style={{ color: "white", textAlign: "center" }}
-            to="/forgetpassword"
-          >
-            Forget Password
-          </Link>
-          <br />
-          <Link style={{ color: "white", textAlign: "center" }} to="/signup">
-            Signup here!
-          </Link>
-        </form>
-      </div>
-    </div>
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form onSubmit={handleChange}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <div className="container mt-3 mx-auto">
+              <h5><Link to="/forgetpassword" style={{textDecoration: "none"}}>Forget Password</Link></h5>
+              <h5><Link to="/signup"  style={{textDecoration: "none"}}>Signup</Link></h5>
+          </div>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 
-export default Login;
+export default Login1;

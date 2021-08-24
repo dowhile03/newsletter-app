@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../Firebase";
+import firebase from "firebase/app";
 import { Link, useHistory, useParams } from "react-router-dom";
 import Search from "../Search";
 import '../TrendingCards.css'
+import Login from "../../pages/Login";
+import Like from "../Like";
 
 
 const CategoriesCard = () => {
@@ -10,7 +13,7 @@ const CategoriesCard = () => {
     const params = useParams();
   const [category, setCategory] = useState([]);
   const [search, setSearch] = useState('')
-
+  const [modalShow, setModalShow] = useState(false);
   function myFunction(e) {
   
     var  ul, li, a, i, txtValue;
@@ -29,6 +32,8 @@ const CategoriesCard = () => {
     }
 }
 
+
+
   useEffect(() => {
     db.collection("categories").onSnapshot((snapshot) => {
       setCategory(
@@ -40,26 +45,6 @@ const CategoriesCard = () => {
     });
   }, []);
 
-const addToFav = () => {
- auth.onAuthStateChanged((user) => {
-     if(!user){
-       history.push("/login")
-     }
-     else {
-       console.log(user);
-      db.collection('users-data').doc(`${user.uid}`).set({
-        username:auth.currentUser.displayName,
-        Email:auth.currentUser.email,
-        fav:2,
-        bk:5
-      }).then(()=> {
-        document.getElementById("emptyLike").style.display = "none"
-        document.getElementById("filledLike").style.display = "block"
-      })
-     }
- }); 
-
-}
 
 const logoutHandler = (e) => {
   e.preventDefault();
@@ -81,6 +66,8 @@ const logoutHandler = (e) => {
   )}
 
 <Search placeholder={"Enter the category to search"}  onChange={myFunction} />
+<Login show={modalShow} onHide={() => setModalShow(false)} />
+
       <div className="container bootstrap snippets bootdeys">
         <ul className="row list-unstyled" id="myUL">
           {category.map((item) => (
@@ -91,14 +78,8 @@ const logoutHandler = (e) => {
             style={{ marginTop: "30px" }}
             >
             { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
-            <div style={{fontSize:"1.5rem",color:"white"}} onClick={addToFav} id="emptyLike">
-            <i className="far fa-heart"></i>
-            </div>
-            <div style={{fontSize:"1.5vw",color:"white",display:"none"}} id="filledLike">
-            <i className="fas fa-heart"></i>
-            </div>
+              <Like  id={item.id}/>
               <div className="cards-list">
-              
               <Link style={{textDecoration:"none"}} to = {`/${item.id}/${item.catItem.link}`}>
               <div className="card 1">
                 <div className="card_image"> <img src={item.catItem.imgLink} /> </div>
