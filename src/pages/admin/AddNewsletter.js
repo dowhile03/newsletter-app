@@ -8,7 +8,7 @@ const AddNewsletter = () => {
     const history = useHistory()
     const [auther, setAuther] = useState("");
     const [comapany, setCompany] = useState("");
-    const [color, setColor] = useState("");
+    const [imgLink, setImgLink] = useState("");
     const [linkAddress, setLinkAddress] = useState("");
       const [cost, setCost] = useState("");
     const submitHandler = (e) => {
@@ -20,14 +20,14 @@ const AddNewsletter = () => {
         .add({
             auther:auther,
             company:comapany,
-            color:color,
+            img_link:imgLink,
             link:linkAddress,
             cost: cost
         })
         .then(() =>{ alert("done!")
         setAuther("");
         setCompany("");
-        setColor("");
+        setImgLink("");
         setLinkAddress("");
         setCost("");
     })
@@ -54,19 +54,19 @@ const AddNewsletter = () => {
 <br /> <br />
 <form className="container" onSubmit={submitHandler}>
 <div className="mb-3">
-  <label htmlFor="author" className="form-label">Author</label>
+  <label htmlFor="author" className="form-label">Author/company name</label>
   <input type="text" className="form-control"   value={auther} onChange={(e) => setAuther(e.target.value)} ></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="company" className="form-label">Company</label>
+  <label htmlFor="company" className="form-label">name of the newsletter</label>
   <input type="text" className="form-control" value={comapany} onChange={(e) => setCompany(e.target.value)}></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="color" className="form-label">color</label>
-  <input type="text" className="form-control" value={color} onChange={(e) => setColor(e.target.value)}></input>
+  <label htmlFor="color" className="form-label">Image Link</label>
+  <input type="text" className="form-control" value={imgLink} onChange={(e) => setImgLink(e.target.value)}></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="address" className="form-label">link address</label>
+  <label htmlFor="address" className="form-label">link to the blog</label>
   <input type="text" className="form-control" value={linkAddress} onChange={(e) => setLinkAddress(e.target.value)} ></input>
 </div>
 <div className="mb-3">

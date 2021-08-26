@@ -59,6 +59,13 @@ const logoutHandler = (e) => {
     });
 }
 
+const deleteThisNewsletter = (id) => {
+  
+
+  db.collection("categories").doc(id).delete();
+
+};
+
   return (
     <div>
   {auth.currentUser && (
@@ -78,7 +85,8 @@ const logoutHandler = (e) => {
             style={{ marginTop: "30px" }}
             >
             { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn btn-secondary " onClick={()=>{history.push(`/${item.id}/${item.catItem.cat}/addnewsletter`)}}>Add Newsletter</button>}
-              <Like  id={item.id}/>
+            <Like  id={item.id}/>
+            { (window.location.pathname === "/addcategory") &&  <button type="button" className="btn " onClick={() => {deleteThisNewsletter(item.id)}}><i className="fas fa-trash text-white"></i></button>}
               <div className="cards-list">
               <Link style={{textDecoration:"none"}} to = {`/${item.id}/${item.catItem.link}`}>
               <div className="card 1">
