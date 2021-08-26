@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { auth, db } from "../Firebase";
 import { Button } from "react-bootstrap";
 import Login from "../pages/Login";
@@ -14,18 +14,24 @@ const Like = ({id}) => {
       }
       else {
      setIds(id)
-     db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('favourites').add({
-       FavouriteId: Ids
-     })
-     .then(()=>{
-       console.log("added to id");
-     })
        
       }
   })
   }
   
 
+
+useEffect(()=>{
+  if(Ids != "") {
+    db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('favourites').add({
+      FavouriteId: Ids
+    })
+    .then(()=>{
+      console.log("added to id");
+    })
+  }
+    
+},[Ids])
  
     return (
         <div className="container">
