@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { db } from "../Firebase";
 import Search from "../components/Search";
 import TrendingCards from "../components/TrendingCards";
+import img from "../creative-hand.jpg"
 
 const Home = () => {
   const [category, setCategory] = useState([]);
@@ -43,8 +44,8 @@ const Home = () => {
         <div className="slider_container">
           {category.map((item) => (
             <div className="item p-3" key={item.id}>
-              <img alt="img" src="https://st4.depositphotos.com/1471096/27376/i/1600/depositphotos_273766126-stock-photo-abstract-creative-wallpaper-colors-blots.jpg" />
-              <p className="text-white text-center">{item.catItem.cat}</p>
+             <img src={img} width="100%" height="100%" alt="cardImg"/>
+            <p className="text-white text-center">{item.catItem.cat}</p>
             </div>
           ))}
         </div>

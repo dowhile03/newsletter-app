@@ -12,6 +12,7 @@ import AdminProtectedRoute from "./AdminProtectedRoute";
 import AddNewsletter from "./pages/admin/AddNewsletter";
 import AddCategory from "./pages/admin/AddCategory";
 import AddTrending from "./pages/admin/AddTrending";
+import EditCategory from "./components/Categories/EditCategory";
 
 
 
@@ -36,6 +37,10 @@ const Routes = () => {
           <AdminProtectedRoute path="/:id/:cat/addnewsletter" exact >
 
             <AddNewsletter/>
+          </AdminProtectedRoute>
+
+          <AdminProtectedRoute path="/:id/:cat/editnewsletter">
+          <EditCategory/>
           </AdminProtectedRoute>
           <AdminProtectedRoute path="/addcategory" exact>
             <AddCategory/>
