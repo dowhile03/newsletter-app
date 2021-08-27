@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../Firebase";
 import Like from "../Like";
-import Classes from "./CategoryList.module.css";
 
 const CategoryList = () => {
   const params = useParams();

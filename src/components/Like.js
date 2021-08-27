@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../Firebase";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import Login from "../pages/Login";
+import Firebase from 'firebase'
 
 const Like = ({id}) => {
   const [modalShow, setModalShow] = useState(false);
@@ -23,11 +24,14 @@ const Like = ({id}) => {
 
 useEffect(()=>{
   if(Ids != "") {
-    db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('favourites').add({
-      FavouriteId: Ids
+    db.collection("users-data").doc(`${auth.currentUser.uid}`).update({
+      FavouriteIds : Firebase.firestore.FieldValue.arrayUnion(Ids)
     })
     .then(()=>{
-      console.log("added to id");
+      Alert("added to id");
+    })
+    .catch(()=>{
+      alert("You have already added this to your favourites");
     })
   }
     

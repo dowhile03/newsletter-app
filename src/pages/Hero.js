@@ -16,7 +16,7 @@ const favouriteHandler = () => {
      setModalShow(true)
     }
     else {
-        history.push('/favourites')
+        history.push(`/newsletter/categories/${user.uid}/favourites`)
     }
   })
 

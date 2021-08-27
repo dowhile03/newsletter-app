@@ -13,6 +13,7 @@ import AddNewsletter from "./pages/admin/AddNewsletter";
 import AddCategory from "./pages/admin/AddCategory";
 import AddTrending from "./pages/admin/AddTrending";
 import EditCategory from "./components/Categories/EditCategory";
+import Favourites from "./pages/Favourites/Favourites";
 
 
 
@@ -29,6 +30,9 @@ const Routes = () => {
 
           <ProtectedRoutes path="/newsletter/categories/:uid" exact>
           <Hero/>
+          </ProtectedRoutes>
+          <ProtectedRoutes path="/newsletter/categories/:uid/favourites" exact>
+          <Favourites/>
           </ProtectedRoutes>
           <AdminProtectedRoute path="/addtrending" exact>
           <AddTrending/>
