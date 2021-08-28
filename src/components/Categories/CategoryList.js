@@ -38,7 +38,7 @@ const CategoryList = () => {
           <div className="cards-list">
           <Link style={{textDecoration:"none"}}>
           <div className="card 1">
-            <div className="card_image"> <img src={letter.newsletter.img_link} /> </div>
+            <div className="card_image"> <img src={letter.newsletter.img_link} alt="newletterImg" /> </div>
             <div className="card_title title-white">
             <p style={{background:"black"}}>by- {letter.newsletter.auther} 
            

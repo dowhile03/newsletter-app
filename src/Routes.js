@@ -19,15 +19,15 @@ import Favourites from "./pages/Favourites/Favourites";
 
 const Routes = () => {
   return (
+    <BrowserRouter>
+    <Switch>
+    <Route path="/" exact component={Home} />
+    <Route path="/forgetpassword" exact component={ForgetPassword} />
+    <Route path="/Admin" exact component={Admin} />
+    <Route path="/newsletter/categories" exact component = {Hero} />
+    <Route path="/:categoryId/:category" exact component={CategoryList}/>
+    
     <AuthProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/forgetpassword" exact component={ForgetPassword} />
-          <Route path="/Admin" exact component={Admin} />
-          <Route path="/newsletter/categories" exact component = {Hero} />
-          <Route path="/:categoryId/:category" exact component={CategoryList}/>
-
           <ProtectedRoutes path="/newsletter/categories/:uid" exact>
           <Hero/>
           </ProtectedRoutes>
@@ -55,10 +55,10 @@ const Routes = () => {
             <AdminProtectedRoute path="/adminsection" exact >
             <AdminSection/>
           </AdminProtectedRoute>
+          </AuthProvider>
           
         </Switch>
       </BrowserRouter>
-    </AuthProvider>
   );
 };
 

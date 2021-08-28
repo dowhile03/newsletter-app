@@ -11,9 +11,9 @@ const Search = ({placeholder, onChange}) => {
   placeholder="Search"
   onChange={onChange}
 />
-<a id="btnSearch" className="btn-search">
+<p id="btnSearch" className="btn-search">
   <i className="fa fa-search"></i>
-</a>
+</p>
 </div>
 </form>
     )

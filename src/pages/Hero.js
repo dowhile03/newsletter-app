@@ -10,6 +10,13 @@ const Hero = () => {
 const [modalShow, setModalShow] = useState(false);
 const history = useHistory()
 const [signup, setSignUp] = useState(false);
+
+auth.onAuthStateChanged((user) => {
+  if(user) {
+    history.push(`/newsletter/categories/${user.uid}`)
+
+  }
+})
 const favouriteHandler = () => {
   auth.onAuthStateChanged((user) => {
     if(!user){

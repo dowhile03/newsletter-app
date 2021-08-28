@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classes from "./Signup.module.css";
 import { auth, db } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
 import { Modal,Button, Form } from "react-bootstrap";

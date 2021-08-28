@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../Firebase";
 import { Alert, Button } from "react-bootstrap";
 import Login from "../pages/Login";
-import Firebase from 'firebase'
 
-const Like = ({id}) => {
+
+const Like = ({id,category,description,imgLink,link}) => {
   const [modalShow, setModalShow] = useState(false);
-  const [Ids,setIds] = useState("")
+  const [Ids,setIds] = useState("");
 
   const addToFav = () => {
     auth.onAuthStateChanged((user) => {
@@ -23,9 +23,13 @@ const Like = ({id}) => {
 
 
 useEffect(()=>{
-  if(Ids != "") {
-    db.collection("users-data").doc(`${auth.currentUser.uid}`).update({
-      FavouriteIds : Firebase.firestore.FieldValue.arrayUnion(Ids)
+  if(Ids !== "") {
+    db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('user-favourite').doc(`${id}`).set({
+      FavouriteIds : id,
+      FavCategory : category,
+      FavDescription : description,
+      FavImgLink : imgLink,
+      FavUrlLink : link
     })
     .then(()=>{
       Alert("added to id");

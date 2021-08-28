@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "./Firebase";
-import Loader from "react-loader-spinner";
 
 export const AuthContext = React.createContext();
 
@@ -18,13 +17,7 @@ export const AuthProvider = ({ children }) => {
   if (pending) {
     return (
       <div style={{ textAlign: "center", marginTop: "10%" }}>
-        <Loader
-          type="TailSpin"
-          color="red"
-          height={300}
-          width={300}
-          timeout={3000} //3 secs
-        />
+       <h1 className="text-white">Wait...</h1>
       </div>
     );
   }

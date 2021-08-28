@@ -14,7 +14,7 @@ function ProtectedRoutes({ children, ...rest }) {
         } else {
           if(!localStorage.getItem('user')){
           return (
-            <Redirect to={{ pathname: "/login", state: { from: location } }} />
+            <Redirect to={{ pathname: "/", state: { from: location } }} />
           )
           } else{
             return children

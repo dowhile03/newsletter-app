@@ -14,7 +14,6 @@ const Login1 = (props) => {
       .then((userCredential) => {
         var user = userCredential.user;
         var uid = user.uid;
-        var displayName = user.displayName;
         var isVerified = user.emailVerified;
         if (isVerified) {
           history.push(`/newsletter/categories/${uid}`);
