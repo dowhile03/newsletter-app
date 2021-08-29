@@ -84,13 +84,7 @@ const CategoriesCard = () => {
                   Add Newsletter
                 </button>
               )}
-              <Like
-                id={item.id}
-                category={item.catItem.cat}
-                description={item.catItem.description}
-                imgLink={item.catItem.imgLink}
-                link={item.catItem.link}
-              />
+             
               {window.location.pathname === "/addcategory" && (
                 <button
                   type="button"

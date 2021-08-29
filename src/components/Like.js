@@ -4,7 +4,7 @@ import { Alert, Button } from "react-bootstrap";
 import Login from "../pages/Login";
 
 
-const Like = ({id,category,description,imgLink,link}) => {
+const Like = ({id,auther,company,imgLink,link,cost}) => {
   const [modalShow, setModalShow] = useState(false);
   const [Ids,setIds] = useState("");
 
@@ -26,10 +26,11 @@ useEffect(()=>{
   if(Ids !== "") {
     db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('user-favourite').doc(`${id}`).set({
       FavouriteIds : id,
-      FavCategory : category,
-      FavDescription : description,
+      FavAuther : auther,
+      Favcompany : company,
       FavImgLink : imgLink,
-      FavUrlLink : link
+      FavUrlLink : link,
+      FavCost:cost
     })
     .then(()=>{
       Alert("added to id");

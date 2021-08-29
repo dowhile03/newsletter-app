@@ -63,7 +63,7 @@ const Favourites = () => {
             <div className="cards-list">
               <Link
                 style={{ textDecoration: "none" }}
-                to={`/${item.id}/${item.catItem.FavUrlLink}`}
+                to={`${item.catItem.FavUrlLink}`}
               >
                 <div className="card 1">
                   <div className="card_image">
@@ -76,8 +76,8 @@ const Favourites = () => {
                     />{" "}
                   </div>
                   <div className="card_title title-white">
-                    <p style={{ background: "black" }}>
-                      {item.catItem.FavCategory}
+                    <p style={{ background: "black",fontSize:"1.4rem" }}>
+                      {item.catItem.Favcompany} by - {item.catItem.FavAuther}
                     </p>
                   </div>
                 </div>
