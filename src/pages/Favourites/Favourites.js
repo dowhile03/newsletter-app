@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../Firebase";
 import img from "../../creative-hand.jpg";
-
+import ReactPaginate from 'react-paginate'
 const Favourites = () => {
   const [category, setCategory] = useState([]);
+  const [pageNumber, setPageNumber] = useState([]);
+
+  const userPerPage = 1;
+  const pageVisited = pageNumber* userPerPage
+  const pageCount = Math.ceil(category.length / userPerPage)
 
   const deleteFav = (id) => {
     db.collection("users-data")
@@ -27,6 +32,10 @@ const Favourites = () => {
         );
       });
   }, []);
+
+  const changePage = ({selected}) => {
+    setPageNumber(selected)
+}
     
   return (
     <div className="container bootstrap snippets bootdeys">
@@ -40,7 +49,7 @@ const Favourites = () => {
     </nav>
 </section>
       <ul className="row list-unstyled" id="myUL">
-        {category.map((item) => (
+        {category.slice(pageVisited,pageVisited+userPerPage).map((item) => (
           <li key={item.id} className="col-sm-4" style={{ marginTop: "30px" }}>
             <button
               className="btn btn-outline-danger"
@@ -77,6 +86,17 @@ const Favourites = () => {
           </li>
         ))}
       </ul>
+      <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousLinkClassName={"previousBttn"}
+                    nextLinkClassName={"nextBttn"}
+                    disabledClassName={"paginationDisabled"}
+                    activeClassName={"paginationActive"}     
+                  />
     </div>
   );
 };

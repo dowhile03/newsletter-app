@@ -6,11 +6,16 @@ import "../TrendingCards.css";
 import Login from "../../pages/Login";
 import Like from "../Like";
 import img from "../../creative-hand.jpg";
+import ReactPaginate from 'react-paginate'
 
 const CategoriesCard = () => {
   const history = useHistory();
   const [category, setCategory] = useState([]);
+  const [pageNumber, setPageNumber] = useState([]);
   const [modalShow, setModalShow] = useState(false);
+  const userPerPage = 6;
+  const pageVisited = pageNumber* userPerPage
+  const pageCount = Math.ceil(category.length / userPerPage)
 
   useEffect(() => {
     db.collection("categories").onSnapshot((snapshot) => {
@@ -22,7 +27,9 @@ const CategoriesCard = () => {
       );
     });
   }, []);
-
+  const changePage = ({selected}) => {
+    setPageNumber(selected)
+}
   const logoutHandler = (e) => {
     e.preventDefault();
     auth
@@ -58,7 +65,7 @@ const CategoriesCard = () => {
 
       <div className="container bootstrap snippets bootdeys">
         <ul className="row list-unstyled" id="myUL">
-          {category.map((item) => (
+          {category.slice(pageVisited,pageVisited+userPerPage).map((item) => (
             <li
               key={item.id}
               className="col-sm-4"
@@ -133,6 +140,17 @@ const CategoriesCard = () => {
           ))}
         </ul>
       </div>
+      <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousLinkClassName={"previousBttn"}
+                    nextLinkClassName={"nextBttn"}
+                    disabledClassName={"paginationDisabled"}
+                    activeClassName={"paginationActive"}     
+                  />
     </div>
   );
 };
