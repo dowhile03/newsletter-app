@@ -19,6 +19,7 @@ import Favourites from "./pages/Favourites/Favourites";
 
 const Routes = () => {
   return (
+    <>
     <BrowserRouter>
     <Switch>
     <Route path="/" exact component={Home} />
@@ -59,6 +60,7 @@ const Routes = () => {
           
         </Switch>
       </BrowserRouter>
+      </>
   );
 };
 
