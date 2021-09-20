@@ -28,7 +28,7 @@ const TrendingCards = () => {
         <div className="card 1">
           <div className="card_image">
             {" "}
-            <img src={img} alt="img" width="100%" height="100%" />{" "}
+            <img src={item.trenItem.link} alt="img" width="100%" height="100%" />{" "}
           </div>
           <div className="card_title title-white">
             <p style={{background:"black",fontSize:"large"}}>{item.trenItem.name} - by {item.trenItem.auther} </p>

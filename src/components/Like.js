@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../Firebase";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import Login from "../pages/Login";
 
 
@@ -48,7 +48,7 @@ useEffect(()=>{
           <div
             className="container"
           >
-          <Button className="btn btn-[rimary" onClick={addToFav}>Add to Fav</Button>
+          <button className="btn" style={{background:"orange",borderRadius:"15px"}} onClick={addToFav}>Add to Fav</button>
           </div>
         </center>
         <Login show={modalShow} onHide={() => setModalShow(false)} />

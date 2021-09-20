@@ -33,11 +33,12 @@ const Login1 = (props) => {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      style={{backdropFilter: "blur(5px)",color:"white"}}
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Login</Modal.Title>
+      <Modal.Header closeButton style={{color:"black"}}>
+        <Modal.Title id="contained-modal-title-vcenter">Login🙄</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{background:"black"}}>
         <Form onSubmit={handleChange}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -46,6 +47,7 @@ const Login1 = (props) => {
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -55,19 +57,20 @@ const Login1 = (props) => {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="warning" type="submit">
             Submit
           </Button>
           <div className="container mt-3 mx-auto">
               <h5><Link to="/forgetpassword" style={{textDecoration: "none"}}>Forget Password</Link></h5>
-              <h5><Link to="/signup"  style={{textDecoration: "none"}}>Signup</Link></h5>
+            
           </div>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button variant="warning" onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
   );

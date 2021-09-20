@@ -13,7 +13,7 @@
 }
 .mainL{
     height: 100vh;
-    background-color:lightgreen;
+    background-color:black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@
     width: 300px;
     border-radius: 25px;
     background-color: rgba(0,0,0,.7);
-    box-shadow: 0 0 10px rgba(255,255,255,.3);
+    box-shadow: 0 0 70px rgba(255,255,255,.3);
 }
 .container h1{
     text-align: left;
@@ -55,7 +55,7 @@
     width: 100%;
     padding: 5px 0;
     border: none;
-    background-color:#2979ff;
+    background-color:orange;
     font-size: 18px;
     color: #fafafa;
     border-radius: 25px;

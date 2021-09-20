@@ -4,8 +4,6 @@ import { Link, useHistory } from "react-router-dom";
 import Search from "../Search";
 import "../TrendingCards.css";
 import Login from "../../pages/Login";
-import Like from "../Like";
-import img from "../../creative-hand.jpg";
 import ReactPaginate from 'react-paginate'
 
 const CategoriesCard = () => {
@@ -118,7 +116,7 @@ const CategoriesCard = () => {
                     <div className="card_image">
                       {" "}
                       <img
-                        src={img}
+                        src={item.catItem.imgLink}
                         width="100%"
                         height="100%"
                         alt="categoryImg"
@@ -134,7 +132,9 @@ const CategoriesCard = () => {
           ))}
         </ul>
       </div>
+      <div style={{color:"yellow"}}>
       <ReactPaginate
+    
                     previousLabel={"Previous"}
                     nextLabel={"Next"}
                     pageCount={pageCount}
@@ -145,6 +145,8 @@ const CategoriesCard = () => {
                     disabledClassName={"paginationDisabled"}
                     activeClassName={"paginationActive"}     
                   />
+      </div>
+
     </div>
   );
 };

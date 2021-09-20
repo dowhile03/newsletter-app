@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { db } from "../../Firebase";
 import Like from "../Like";
 import Typewriter from 'typewriter-effect'
+import Footer from "../Footer";
 
 const CategoryList = () => {
   const params = useParams();
@@ -26,6 +27,7 @@ const CategoryList = () => {
     <div>
    
   <div className="container text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
+  <Link to="/"><button className="favBtn mx-2">Home</button></Link>
   <h1 className="text-white p-3">
     <span style={{ color: "orange" }}></span>Finally here are your 
     <span style={{ color: "orange" }}> Newsletters!</span>
@@ -35,7 +37,7 @@ const CategoryList = () => {
           strings: [
             "Your Customized Newsletters",
             "Add to Fav",
-            "Don't Forget to give forget",
+            "we make sure you get, what you want",
           ],
           autoStart: true,
           loop: true,
@@ -62,7 +64,7 @@ const CategoryList = () => {
                 cost ={letter.newsletter.cost}
               />
           <div className="cards-list">
-          <Link style={{textDecoration:"none"}} to={letter.newsletter.link} target="_blank">
+          <Link style={{textDecoration:"none"}} to={`/${params.categoryId}/${params.category}/${letter.id}/moredetails`}>
           <div className="card 1">
             <div className="card_image"> <img src={letter.newsletter.img_link} alt="newletterImg" /> </div>
             <div className="card_title title-white">
@@ -78,7 +80,7 @@ const CategoryList = () => {
       ))}
     </ul>
   </div>
-             
+      <Footer/>       
     </div>
   );
 };

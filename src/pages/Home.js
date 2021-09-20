@@ -6,6 +6,7 @@ import { db } from "../Firebase";
 import Search from "../components/Search";
 import TrendingCards from "../components/TrendingCards";
 import img from "../creative-hand.jpg"
+import Footer from "../components/Footer"
 
 const Home = () => {
   const [category, setCategory] = useState([]);
@@ -43,10 +44,12 @@ const Home = () => {
       <div className="horizontal_slider">
         <div className="slider_container">
           {category.map((item) => (
+            <Link to={`/${item.id}/${item.catItem.link}`}>
             <div className="item p-3" key={item.id}>
-             <img src={img} width="100%" height="100%" alt="cardImg"/>
+             <img src={item.catItem.imgLink} width="100%" height="100%" alt="cardImg"/>
             <p className="text-white text-center">{item.catItem.cat}</p>
             </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -64,7 +67,7 @@ const Home = () => {
       </h1>
     
      <TrendingCards/>
-   
+     <Footer/>
     </div>
   );
 };

@@ -57,7 +57,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 
 
 .paginationBttns {
-  width: 80%;
+  width: 100%;
   height: 40px;
   list-style: none;
   display: flex;
@@ -67,25 +67,27 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
 .paginationBttns a {
   padding: 10px;
   margin: 8px;
-  border-radius: 5px;
-  border: 1px solid #2b2eff;
-  color: #2b2eff;
+  border-radius: 15px;
+  background-color: orange;
+
   cursor: pointer;
 }
 
 .paginationBttns a:hover {
-  color: white;
-  background-color: #2b2eff;
+  background-color: rgb(255, 194, 80);
+  color: black;
 }
 
 .paginationActive a {
   color: white;
-  background-color: #2b2eff;
+  background-color: orange;
 }
 
 .paginationDisabled a {
-  color: grey;
-  background-color: grey;
+  color: white;
+  background-color: transparent;
+  border: 1px solid orange;
+  text-decoration: none;
 }
 
 @media all and (max-width: 500px) {

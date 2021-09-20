@@ -4,7 +4,8 @@ import CategoriesCard from "../components/Categories/CategoriesCard"
 import Login from './Login';
 import Signup from './Signup';
 import { auth } from '../Firebase';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Footer from "../components/Footer"
 
 const Hero = () => {   
 const [modalShow, setModalShow] = useState(false);
@@ -37,17 +38,20 @@ const favouriteHandler = () => {
             <span style={{ color: "orange" }}> Newsletters!</span>
           </h1>
           <div className="mx-auto">
+          <Link to="/"><button className="favBtn mx-2">Home</button></Link>
             <button className="favBtn mx-2" onClick={() => setModalShow(true)}>Login</button>
             <button className="favBtn mx-2" onClick={() => setSignUp(true)}>Signup</button>
-            </div>
-            <div className="p-5">
+            <br /> <br />
             <button className="favBtn" onClick={favouriteHandler}>Favourites</button>
+
             </div>
+            
            
             </nav>
         <Login show={modalShow} onHide={() => setModalShow(false)} />
         <Signup show={signup} onHide={() => setSignUp(false)}/>
           <CategoriesCard/>
+          <Footer/>
         </section>
     )
 }

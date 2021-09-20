@@ -14,6 +14,7 @@ import AddCategory from "./pages/admin/AddCategory";
 import AddTrending from "./pages/admin/AddTrending";
 import EditCategory from "./components/Categories/EditCategory";
 import Favourites from "./pages/Favourites/Favourites";
+import NewsletterDetails from "./components/Categories/NewsletterDetails";
 
 
 
@@ -27,6 +28,7 @@ const Routes = () => {
     <Route path="/Admin" exact component={Admin} />
     <Route path="/newsletter/categories" exact component = {Hero} />
     <Route path="/:categoryId/:category" exact component={CategoryList}/>
+    <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     
     <AuthProvider>
           <ProtectedRoutes path="/newsletter/categories/:uid" exact>

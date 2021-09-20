@@ -32,7 +32,7 @@ const ForgetPassword = () => {
           />
           <br />
           <button type="submit">Reset Password</button> <br /> <br />
-          <Link style={{ color: "white", textAlign: "center" }} to="/login">
+          <Link style={{ color: "white", textAlign: "center" }} to="/home">
             Login here!
           </Link>
         </form>
