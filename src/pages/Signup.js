@@ -11,7 +11,7 @@ const Signup1 = (props) => {
     const [confirmPassword, setConfirmPassword] = useState("");
   
     const handleChange = (e) => {
-      e.preventDefault()
+      e.preventDefault();
       if(password !== confirmPassword) {
         alert("Password do not match");
         setPassword("")
@@ -22,18 +22,22 @@ const Signup1 = (props) => {
       {auth
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
+          // alert("we are in");
           if (auth.currentUser != null) {
             auth.currentUser.updateProfile({
                displayName: username
            }).then(function () {
+             alert("we are in this")
                console.log("Updated");  
            }, function (error) {
+             alert(error);
                console.log("Error happened");
            });
        }
-          var user = userCredential.user;
-          if (user) {
-           
+       console.log(userCredential);
+          
+          if (userCredential) {
+           console.log(userCredential);
             db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
                 Email: email,
                 username:username
@@ -41,12 +45,11 @@ const Signup1 = (props) => {
               auth.currentUser.sendEmailVerification().then(() => {
                 // Email verification sent!
                 alert("Verification Email has been Sent");
-              history.push("/login");
               });
-    
+                  
             })
             .catch(error => {
-  
+  alert(error);
             })
             
           }

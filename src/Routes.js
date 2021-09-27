@@ -36,7 +36,7 @@ const Routes = () => {
           </ProtectedRoutes>
           <ProtectedRoutes path="/newsletter/categories/:uid/favourites" exact>
           <Favourites/>
-          </ProtectedRoutes>
+          </ProtectedRoutes> 
           <AdminProtectedRoute path="/addtrending" exact>
           <AddTrending/>
           </AdminProtectedRoute>

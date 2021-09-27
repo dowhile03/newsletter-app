@@ -14,7 +14,7 @@ const Admin = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        var user = userCredential.user;
+        var user = userCredential;
         if(user.email === "kartikey110813@gmail.com") {
         history.push("/adminsection");
         }

@@ -12,7 +12,7 @@ const Login1 = (props) => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        var user = userCredential.user;
+        var user = userCredential;
         var uid = user.uid;
         var isVerified = user.emailVerified;
         if (isVerified) {
