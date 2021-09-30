@@ -10,6 +10,7 @@ const AddNewsletter = () => {
     const [comapany, setCompany] = useState("");
     const [imgLink, setImgLink] = useState("");
     const [linkAddress, setLinkAddress] = useState("");
+    const [description,setDescription] = useState("")
       const [cost, setCost] = useState("");
     const submitHandler = (e) => {
         e.preventDefault();
@@ -22,7 +23,8 @@ const AddNewsletter = () => {
             company:comapany,
             img_link:imgLink,
             link:linkAddress,
-            cost: cost
+            cost: cost,
+            description:description
         })
         .then(() =>{ alert("done!")
         setAuther("");
@@ -30,6 +32,7 @@ const AddNewsletter = () => {
         setImgLink("");
         setLinkAddress("");
         setCost("");
+        setDescription("");
     })
         .catch(error => alert(error));
     }
@@ -68,6 +71,14 @@ const AddNewsletter = () => {
 <div className="mb-3">
   <label htmlFor="address" className="form-label">link to the blog</label>
   <input type="text" className="form-control" value={linkAddress} onChange={(e) => setLinkAddress(e.target.value)} ></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="cost" className="form-label">Cost</label>
+  <input type="text" className="form-control" value={cost} onChange={(e) => setCost(e.target.value)} ></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="cost" className="form-label">Description</label>
+  <input type="text" className="form-control" value={description} onChange={(e) => setDescription(e.target.value)} ></input>
 </div>
 <div className="mb-3">
   <label htmlFor="cost" className="form-label">Cost</label>

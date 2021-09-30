@@ -15,10 +15,11 @@ const Login1 = (props) => {
         var user = userCredential;
         var uid = user.uid;
         var isVerified = user.emailVerified;
-        if (isVerified) {
+        if (isVerified == true) {
           history.push(`/newsletter/categories/${uid}`);
         } else {
           alert("Your Email is not verified");
+          alert(isVerified)
         }
       })
       .catch((error) => {

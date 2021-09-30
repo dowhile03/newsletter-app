@@ -26,33 +26,32 @@ const Signup1 = (props) => {
           if (auth.currentUser != null) {
             auth.currentUser.updateProfile({
                displayName: username
-           }).then(function () {
-             alert("we are in this")
-               console.log("Updated");  
-           }, function (error) {
-             alert(error);
-               console.log("Error happened");
+           }).then(()=>{
+            if (userCredential) {
+              console.log(userCredential);
+               db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
+                   Email: email,
+                   username:username
+               }).then(() => {
+                 auth.currentUser.sendEmailVerification().then(() => {
+                   // Email verification sent!
+                   alert("Verification Email has been Sent");
+                   alert("your signup is successful")
+                 });
+                     
+               })
+               .catch(error => {
+     alert(error);
+               })
+               .then(() => {
+                 history.push("/")
+               })
+               
+             }
            });
        }
-       console.log(userCredential);
           
-          if (userCredential) {
-           console.log(userCredential);
-            db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
-                Email: email,
-                username:username
-            }).then(() => {
-              auth.currentUser.sendEmailVerification().then(() => {
-                // Email verification sent!
-                alert("Verification Email has been Sent");
-              });
-                  
-            })
-            .catch(error => {
-  alert(error);
-            })
-            
-          }
+          
         })
         .catch((error) => {
           var errorMessage = error.message;

@@ -1,5 +1,4 @@
 import React,{useEffect,useState} from 'react'
-import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import Typewriter from "typewriter-effect"
 import Footer from '../Footer';
@@ -30,7 +29,10 @@ const NewsletterDetails = () => {
               }}
             />
           </div>
-      
+              <div>
+                <h1 className="text-white p-3">Title of Newsletter</h1>
+                <p className="text-white p-3">Description of newsletter in two to three lines</p>
+              </div>
           <hr />
          <div>
          
