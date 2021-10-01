@@ -9,60 +9,57 @@ const Signup1 = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    if(password !== confirmPassword) {
+            alert("Password do not match");
+            setPassword("")
+            setConfirmPassword("")
+            return -2;
+          }
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        if (auth.currentUser != null) {
+          auth.currentUser.updateProfile({
+             displayName: username
+         }).then(function () {
+             console.log("Updated");
+         })
+         .catch(err => {console.log(err)});
+     }
+        var user = userCredential.user;
+        if (user) {
+         
+          db.collection("architect-user-details").add({
+              Email: email,
+              username:username
+          }).then(() => {
+            auth.currentUser.sendEmailVerification().then(() => {
+              // Email verification sent!
+              alert("Verification Email has been Sent");
+            history.push("/");
+            });
   
-    const handleChange = (e) => {
-      e.preventDefault();
-      if(password !== confirmPassword) {
-        alert("Password do not match");
-        setPassword("")
-        setConfirmPassword("")
-      }
-    
-  else
-      {auth
-        .createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // alert("we are in");
-          if (auth.currentUser != null) {
-            auth.currentUser.updateProfile({
-               displayName: username
-           }).then(()=>{
-            if (userCredential) {
-              console.log(userCredential);
-               db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
-                   Email: email,
-                   username:username
-               }).then(() => {
-                 auth.currentUser.sendEmailVerification().then(() => {
-                   // Email verification sent!
-                   alert("Verification Email has been Sent");
-                   alert("your signup is successful")
-                 });
-                     
-               })
-               .catch(error => {
-     alert(error);
-               })
-               .then(() => {
-                 history.push("/")
-               })
-               
-             }
-           });
-       }
+          })
+         
           
-          
-        })
-        .catch((error) => {
-          var errorMessage = error.message;
-          alert(errorMessage);
-        });
+        }
+      })
+      .catch((error) => {
+        var errorMessage = error.message;
+        alert(errorMessage);
+      });
+
       setConfirmPassword("");
-      setUsername("");
-      setEmail("");
-      setPassword("");}
-    };
-  
+
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
 
   return (
     <Modal

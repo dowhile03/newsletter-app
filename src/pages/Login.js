@@ -11,15 +11,15 @@ const Login1 = (props) => {
     e.preventDefault();
     auth
       .signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        var user = userCredential;
-        var uid = user.uid;
-        var isVerified = user.emailVerified;
+      .then(async (userCredential) => {
+        var uid = await userCredential.uid;
+        var isVerified = await userCredential.emailVerified;
         if (isVerified == true) {
           history.push(`/newsletter/categories/${uid}`);
         } else {
           alert("Your Email is not verified");
           alert(isVerified)
+          console.log(auth.currentUser);
         }
       })
       .catch((error) => {

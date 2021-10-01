@@ -31,12 +31,15 @@ const Routes = () => {
     <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     
     <AuthProvider>
+
+    <ProtectedRoutes path="/newsletter/categories/:uid" exact>
+          <Hero/>
+          </ProtectedRoutes>
+
     <ProtectedRoutes path="/newsletter/categories/:uid/favourites" exact>
           <Favourites/>
           </ProtectedRoutes> 
-          <ProtectedRoutes path="/newsletter/categories/:uid" exact>
-          <Hero/>
-          </ProtectedRoutes>
+         
          
           <AdminProtectedRoute path="/addtrending" exact>
           <AddTrending/>
