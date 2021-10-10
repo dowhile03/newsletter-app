@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../Firebase";
-import img from "../../creative-hand.jpg";
+import img from "../../images/creative-hand.jpg";
 import ReactPaginate from 'react-paginate'
 const Favourites = () => {
   const [category, setCategory] = useState([]);

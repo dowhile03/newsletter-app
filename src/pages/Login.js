@@ -1,21 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect, useRef } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { auth } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
 const Login1 = (props) => {
-  let history = useHistory();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const history = useHistory();
+  const [verified,setVerified] = useState(false);
+  const passwordRef = useRef();
+  const emailRef = useRef();
 
-  const handleChange = (e) => {
+  const [uid,setUid] = useState(0)
+
+  const handleChange = async (e) => {
     e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, password)
+   await auth
+      .signInWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
       .then(async (userCredential) => {
         var uid = await userCredential.uid;
         var isVerified = await userCredential.emailVerified;
         if (isVerified == true) {
-          history.push(`/newsletter/categories/${uid}`);
+          setVerified(true)
+          setUid(uid)
         } else {
           alert("Your Email is not verified");
           alert(isVerified)
@@ -28,6 +32,15 @@ const Login1 = (props) => {
       });
   };
 
+  useEffect(() => {
+    if(verified) {
+      history.push(`/newsletter/categories/${uid}`)
+    }
+    else {
+      history.push('/')
+    }
+
+  }, [verified])
   return (
     <Modal
       {...props}
@@ -46,8 +59,7 @@ const Login1 = (props) => {
             <Form.Control
               type="email"
               placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              ref={emailRef}
               style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>
@@ -56,8 +68,7 @@ const Login1 = (props) => {
             <Form.Control
               type="password"
               placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
+              ref={passwordRef}
               style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>

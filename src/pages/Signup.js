@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { auth, db } from "../Firebase";
 import { useHistory } from "react-router-dom";
 import { Modal,Button, Form } from "react-bootstrap";
@@ -6,22 +6,19 @@ const Signup1 = (props) => {
     let history = useHistory();
 
     const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const confirmPasswordRef = useRef();
 
-  const handleChange = (e) => {
+  const  handleChange = async (e) => {
     e.preventDefault();
 
-    if(password !== confirmPassword) {
-            alert("Password do not match");
-            setPassword("")
-            setConfirmPassword("")
-            return -2;
-          }
+    if(passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return alert("Password do not match with confirmpassword");
+      }
 
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    await auth
+      .createUserWithEmailAndPassword(emailRef.current.value, passwordRef.current.value)
       .then((userCredential) => {
         if (auth.currentUser != null) {
           auth.currentUser.updateProfile({
@@ -35,7 +32,7 @@ const Signup1 = (props) => {
         if (user) {
          
           db.collection("architect-user-details").add({
-              Email: email,
+              Email: emailRef.current.value,
               username:username
           }).then(() => {
             auth.currentUser.sendEmailVerification().then(() => {
@@ -54,11 +51,8 @@ const Signup1 = (props) => {
         alert(errorMessage);
       });
 
-      setConfirmPassword("");
 
     setUsername("");
-    setEmail("");
-    setPassword("");
   };
 
   return (
@@ -87,30 +81,27 @@ const Signup1 = (props) => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Email</Form.Label>
             <Form.Control
+            ref={emailRef}
               type="email"
               placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
               style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+            ref={passwordRef}
               type="password"
               placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
               style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control
+            ref={confirmPasswordRef}
               type="password"
               placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              value={confirmPassword}
               style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
             />
           </Form.Group>

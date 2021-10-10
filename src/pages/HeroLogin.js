@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import './Hero.css';
 import CategoriesCard from "../components/Categories/CategoriesCard"
 import Login from './Login';
@@ -7,19 +7,17 @@ import { auth } from '../Firebase';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from "../components/Footer"
 
-const Hero = () => {   
+const HeroLogin = () => {   
 const [modalShow, setModalShow] = useState(false);
 const history = useHistory()
 const [signup, setSignUp] = useState(false);
 
-useEffect(()=>{
-  auth.onAuthStateChanged((user) => {
-    if(user) {
-      history.push(`/newsletter/categories/${user.uid}`)
-  
-    }
-  })
-},[])
+auth.onAuthStateChanged((user) => {
+  if(user) {
+    history.push(`/newsletter/categories/${user.uid}`)
+
+  }
+})
 const favouriteHandler = () => {
   auth.onAuthStateChanged((user) => {
     if(!user){
@@ -63,4 +61,4 @@ const favouriteHandler = () => {
     )
 }
 
-export default Hero;
+export default HeroLogin;

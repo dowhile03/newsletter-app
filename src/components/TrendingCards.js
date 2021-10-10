@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../Firebase";
 import "./TrendingCards.css";
-import img from "../creative-hand.jpg"
 
 
 const TrendingCards = () => {

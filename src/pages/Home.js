@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { db } from "../Firebase";
 import Search from "../components/Search";
 import TrendingCards from "../components/TrendingCards";
-import img from "../creative-hand.jpg"
+import img from "../images/creative-hand.jpg"
 import Footer from "../components/Footer"
 
 const Home = () => {
@@ -54,7 +54,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Link style={{ textDecoration: "none" }} to="/newsletter/categories">
+      <Link style={{ textDecoration: "none" }} to="/newslette">
         {" "}
         <p className="text-white">
           Explore <span style={{ color: "orange  " }}>More</span> ➡{" "}

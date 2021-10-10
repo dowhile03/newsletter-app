@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
-import { AuthProvider } from "./AuthProvider";
 import ForgetPassword from "./pages/ForgetPassword";
 import Home from "./pages/Home";
 import ProtectedRoutes from "./ProtectedRoutes";
@@ -15,6 +14,8 @@ import AddTrending from "./pages/admin/AddTrending";
 import EditCategory from "./components/Categories/EditCategory";
 import Favourites from "./pages/Favourites/Favourites";
 import NewsletterDetails from "./components/Categories/NewsletterDetails";
+import HeroLogin from "./pages/HeroLogin";
+import { AuthContext } from "./Context/AuthContext";
 
 
 
@@ -24,16 +25,16 @@ const Routes = () => {
     <BrowserRouter>
     <Switch>
     <Route path="/" exact component={Home} />
+    <Route path="/newslette" exact component={Hero} />
     <Route path="/forgetpassword" exact component={ForgetPassword} />
     <Route path="/Admin" exact component={Admin} />
-    <Route path="/newsletter/categories" exact component = {Hero} />
     <Route path="/:categoryId/:category" exact component={CategoryList}/>
     <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     
-    <AuthProvider>
+    <AuthContext>
 
     <ProtectedRoutes path="/newsletter/categories/:uid" exact>
-          <Hero/>
+          <HeroLogin/>
           </ProtectedRoutes>
 
     <ProtectedRoutes path="/newsletter/categories/:uid/favourites" exact>
@@ -62,7 +63,7 @@ const Routes = () => {
             <AdminProtectedRoute path="/adminsection" exact >
             <AdminSection/>
           </AdminProtectedRoute>
-          </AuthProvider>
+          </AuthContext>
           
         </Switch>
       </BrowserRouter>
