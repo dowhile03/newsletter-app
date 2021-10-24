@@ -13,10 +13,14 @@ const history = useHistory()
 const [signup, setSignUp] = useState(false);
 
 auth.onAuthStateChanged((user) => {
-  if(user) {
+  if(user && user.emailVerified === true) {
     history.push(`/newsletter/categories/${user.uid}`)
-
+      
   }
+  else {
+    auth.signOut()
+  }
+ 
 })
 const favouriteHandler = () => {
   auth.onAuthStateChanged((user) => {

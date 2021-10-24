@@ -12,7 +12,7 @@ const ForgetPassword = () => {
     if (email) {
      auth.sendPasswordResetEmail(email).then( ()=>
         { alert(`Password reset link has been sent to your mail id - ${email}`);
-        history.push("/login")}
+        history.push("/newsletter/categories")}
      )
     }    
   };
@@ -32,7 +32,7 @@ const ForgetPassword = () => {
           />
           <br />
           <button type="submit">Reset Password</button> <br /> <br />
-          <Link style={{ color: "white", textAlign: "center" }} to="/home">
+          <Link style={{ color: "white", textAlign: "center" }} to="/newsletter/categories">
             Login here!
           </Link>
         </form>

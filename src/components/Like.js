@@ -40,7 +40,7 @@ useEffect(()=>{
     })
   }
     
-},[Ids])
+},[Ids,auther,company,imgLink,link,cost,id])
  
     return (
         <div className="container">

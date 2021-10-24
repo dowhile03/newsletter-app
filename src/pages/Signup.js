@@ -1,57 +1,61 @@
 import React, { useState } from "react";
 import { auth, db } from "../Firebase";
 import { useHistory } from "react-router-dom";
-import { Modal,Button, Form } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 const Signup1 = (props) => {
-    let history = useHistory();
+  let history = useHistory();
 
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-  
-    const handleChange = (e) => {
-      e.preventDefault();
-      if(password !== confirmPassword) {
-        alert("Password do not match");
-        setPassword("")
-        setConfirmPassword("")
-      }
-    
-  else
-      {auth
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Password do not match");
+      setPassword("");
+      setConfirmPassword("");
+    } else {
+      auth
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           // alert("we are in");
           if (auth.currentUser != null) {
-            auth.currentUser.updateProfile({
-               displayName: username
-           }).then(function () {
-             alert("we are in this")
-               console.log("Updated");  
-           }, function (error) {
-             alert(error);
-               console.log("Error happened");
-           });
-       }
-       console.log(userCredential);
-          
+            auth.currentUser
+              .updateProfile({
+                displayName: username,
+              })
+              .then(
+                function () {
+                  // alert("we are in this");
+                  console.log("Updated");
+                },
+                function (error) {
+                  alert(error);
+                  console.log("Error happened");
+                }
+              );
+          }
+          console.log(userCredential);
+
           if (userCredential) {
-           console.log(userCredential);
-            db.collection("users-data").doc(`${auth.currentUser.uid}`).set({
+            alert("hey we are here");
+            db.collection("users-data")
+              .doc(`${auth.currentUser.uid}`)
+              .set({
                 Email: email,
-                username:username
-            }).then(() => {
-              auth.currentUser.sendEmailVerification().then(() => {
-                // Email verification sent!
-                alert("Verification Email has been Sent");
+                username: username,
+              })
+              .then(() => {
+                auth.currentUser.sendEmailVerification().then(() => {
+                  // Email verification sent!
+                  alert("Verification Email has been Sent");
+                });
+              })
+              .catch((error) => {
+                alert(error);
               });
-                  
-            })
-            .catch(error => {
-  alert(error);
-            })
-            
           }
         })
         .catch((error) => {
@@ -61,9 +65,9 @@ const Signup1 = (props) => {
       setConfirmPassword("");
       setUsername("");
       setEmail("");
-      setPassword("");}
-    };
-  
+      setPassword("");
+    }
+  };
 
   return (
     <Modal
@@ -71,12 +75,12 @@ const Signup1 = (props) => {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      style={{backdropFilter: "blur(5px)",color:"white"}}
+      style={{ backdropFilter: "blur(5px)", color: "white" }}
     >
-      <Modal.Header closeButton style={{color:"black"}}>
+      <Modal.Header closeButton style={{ color: "black" }}>
         <Modal.Title id="contained-modal-title-vcenter">Signup🙄</Modal.Title>
       </Modal.Header>
-      <Modal.Body style={{background:"black"}}>
+      <Modal.Body style={{ background: "black" }}>
         <Form onSubmit={handleChange}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
@@ -85,7 +89,13 @@ const Signup1 = (props) => {
               placeholder="Enter username"
               onChange={(e) => setUsername(e.target.value)}
               value={username}
-              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
+              style={{
+                background: "transparent",
+                color: "white",
+                border: "none",
+                borderBottom: "1px solid white",
+                outlineWidth: "0",
+              }}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -95,7 +105,13 @@ const Signup1 = (props) => {
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
+              style={{
+                background: "transparent",
+                color: "white",
+                border: "none",
+                borderBottom: "1px solid white",
+                outlineWidth: "0",
+              }}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -105,7 +121,13 @@ const Signup1 = (props) => {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
+              style={{
+                background: "transparent",
+                color: "white",
+                border: "none",
+                borderBottom: "1px solid white",
+                outlineWidth: "0",
+              }}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -115,17 +137,24 @@ const Signup1 = (props) => {
               placeholder="Confirm Password"
               onChange={(e) => setConfirmPassword(e.target.value)}
               value={confirmPassword}
-              style={{background:"transparent",color:"white",border:"none",borderBottom:"1px solid white",outlineWidth:"0"}}
+              style={{
+                background: "transparent",
+                color: "white",
+                border: "none",
+                borderBottom: "1px solid white",
+                outlineWidth: "0",
+              }}
             />
           </Form.Group>
           <Button variant="warning" type="submit">
             Submit
           </Button>
-         
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="warning" onClick={props.onHide}>Close</Button>
+        <Button variant="warning" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

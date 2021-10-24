@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { db } from "../Firebase";
 import Search from "../components/Search";
 import TrendingCards from "../components/TrendingCards";
-import img from "../creative-hand.jpg"
 import Footer from "../components/Footer"
 
 const Home = () => {
@@ -44,8 +43,8 @@ const Home = () => {
       <div className="horizontal_slider">
         <div className="slider_container">
           {category.map((item) => (
-            <Link to={`/${item.id}/${item.catItem.link}`}>
-            <div className="item p-3" key={item.id}>
+            <Link key={item.id} to={`/${item.id}/${item.catItem.link}`}>
+            <div className="item p-3" >
              <img src={item.catItem.imgLink} width="100%" height="100%" alt="cardImg"/>
             <p className="text-white text-center">{item.catItem.cat}</p>
             </div>
