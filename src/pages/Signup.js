@@ -20,43 +20,11 @@ const Signup1 = (props) => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          // alert("we are in");
-          if (auth.currentUser != null) {
-            auth.currentUser
-              .updateProfile({
-                displayName: username,
-              })
-              .then(
-                function () {
-                  // alert("we are in this");
-                  console.log("Updated");
-                },
-                function (error) {
-                  alert(error);
-                  console.log("Error happened");
-                }
-              );
+          if(userCredential!= null) {
+            userCredential.sendEmailVerification();
+            alert("Verification email sent");
           }
-          console.log(userCredential);
-
-          if (userCredential) {
-            alert("hey we are here");
-            db.collection("users-data")
-              .doc(`${auth.currentUser.uid}`)
-              .set({
-                Email: email,
-                username: username,
-              })
-              .then(() => {
-                auth.currentUser.sendEmailVerification().then(() => {
-                  // Email verification sent!
-                  alert("Verification Email has been Sent");
-                });
-              })
-              .catch((error) => {
-                alert(error);
-              });
-          }
+         
         })
         .catch((error) => {
           var errorMessage = error.message;
@@ -161,3 +129,46 @@ const Signup1 = (props) => {
 };
 
 export default Signup1;
+
+
+
+
+
+
+
+// if (auth.currentUser != null) {
+//   auth.currentUser
+//     .updateProfile({
+//       displayName: username,
+//     })
+//     .then(
+//       function () {
+//         // alert("we are in this");
+//         console.log("Updated");
+//       },
+//       function (error) {
+//         alert(error);
+//         console.log("Error happened");
+//       }
+//     );
+// }
+// console.log(userCredential);
+
+// if (userCredential) {
+//   alert("hey we are here");
+//   db.collection("users-data")
+//     .doc(`${auth.currentUser.uid}`)
+//     .set({
+//       Email: email,
+//       username: username,
+//     })
+//     .then(() => {
+//       auth.currentUser.sendEmailVerification().then(() => {
+//         // Email verification sent!
+//         alert("Verification Email has been Sent");
+//       });
+//     })
+//     .catch((error) => {
+//       alert(error);
+//     });
+// }

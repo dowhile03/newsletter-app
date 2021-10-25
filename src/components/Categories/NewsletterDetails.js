@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
+import { useParams } from "react-router";
+import { db } from "../../Firebase";
 import Footer from "../Footer";
 
 const NewsletterDetails = () => {
 
-  
+  const params = useParams();
+  const [newsletter, setNewsletter] = useState([]);
+
+  useEffect(() => {
+    db.collection("categories")
+      .doc(`${params.categoryId}`)
+      .collection("newletter")
+      .doc(`${params.newsletterId}`)
+      .onSnapshot((snapshot) => {
+        setNewsletter({
+         data:snapshot.data(),
+         id: snapshot.id
+         } );
+      });
+  }, [params.categoryId]);
+console.log(newsletter.data);
 
 
   return (
@@ -37,21 +54,25 @@ const NewsletterDetails = () => {
       <hr className="mx-auto" style={{ color: "white", width: "50%" }} />
       <br />
       <div className="text-white container">
-        <h1>Newsletter Name</h1>
-        <h5>- Writer of this newsletter</h5>
-        <button className="btn btn-success">
-          Subscribe <i className="fa fa-share"></i>
-        </button>
+        <h1>{newsletter.data.newsletterName}</h1>
+        <h5>- {newsletter.data.auther}</h5>
+        <a className="btn btn-success">
+         <Link to={newsletter.data.link}> Subscribe </Link> <i className="fa fa-share"></i>
+        </a>
         <br />
         <div className="pt-4">
-          <span className="badge bg-danger m-2">🗓️Sent weekly</span>
-          <span className="badge bg-primary m-2">Active</span>
-          <span className="badge bg-warning m-2">Free</span>
-          <span className="badge bg-secondary m-2">category</span>
+          { (newsletter.data.isWeekly) && <span className="badge bg-danger m-2">🗓️Sent weekly</span> }
+          { (newsletter.data.isfree) && <span className="badge bg-danger m-2">Free</span> }
+          { (!newsletter.data.isfree) && <span className="badge bg-danger m-2">Paid</span> }
+
+          { (newsletter.data.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
+          { (newsletter.data.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
+
+    
         </div>
         <div className="img-fluid text-center">
           <img
-            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
+            src={newsletter.data.img_link}
             alt=""
             width="50%"
           />
@@ -63,10 +84,7 @@ const NewsletterDetails = () => {
           </div>
         </div>
         <div>
-          In publishing and graphic design, Lorem ipsum is a placeholder text
-          commonly used to demonstrate the visual form of a document or a
-          typeface without relying on meaningful content. Lorem ipsum may be
-          used as a placeholder before final copy is available.
+          {newsletter.data.description}
         </div>
         <div
           className="text-white mt-5 p-5"

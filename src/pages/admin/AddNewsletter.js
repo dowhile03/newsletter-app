@@ -7,10 +7,15 @@ const AddNewsletter = () => {
   const params = useParams()
     const history = useHistory()
     const [auther, setAuther] = useState("");
-    const [comapany, setCompany] = useState("");
+    const [newsletterName, setNewsLetterName] = useState("");
     const [imgLink, setImgLink] = useState("");
     const [linkAddress, setLinkAddress] = useState("");
-      const [cost, setCost] = useState("");
+    const [isfree, setIsfree] = useState(true);
+    const [isWeekly,setWeekly] = useState(false);
+    const [isMonthly,setIsMonthly] = useState(false);
+    const [isAnually,setIsAnually] = useState(false);
+    const [description, setDescription] = useState("");
+
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -19,17 +24,21 @@ const AddNewsletter = () => {
         .collection('newletter')
         .add({
             auther:auther,
-            company:comapany,
+            newsletterName:newsletterName,
             img_link:imgLink,
             link:linkAddress,
-            cost: cost
+            isfree:isfree,
+            isMonthly:isMonthly,
+            isWeekly:isWeekly,
+            isAnually:isAnually,
+            description: description
         })
         .then(() =>{ alert("done!")
         setAuther("");
-        setCompany("");
+        setNewsLetterName("");
         setImgLink("");
         setLinkAddress("");
-        setCost("");
+        setDescription("")
     })
         .catch(error => alert(error));
     }
@@ -58,8 +67,12 @@ const AddNewsletter = () => {
   <input type="text" className="form-control"   value={auther} onChange={(e) => setAuther(e.target.value)} ></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="company" className="form-label">name of the newsletter</label>
-  <input type="text" className="form-control" value={comapany} onChange={(e) => setCompany(e.target.value)}></input>
+  <label htmlFor="company" className="form-label">Name of the newsletter</label>
+  <input type="text" className="form-control" value={newsletterName} onChange={(e) => setNewsLetterName(e.target.value)}></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="company" className="form-label">Description</label>
+  <input type="text" className="form-control" value={description} onChange={(e) => setDescription(e.target.value)}></input>
 </div>
 <div className="mb-3">
   <label htmlFor="color" className="form-label">Image Link</label>
@@ -70,8 +83,20 @@ const AddNewsletter = () => {
   <input type="text" className="form-control" value={linkAddress} onChange={(e) => setLinkAddress(e.target.value)} ></input>
 </div>
 <div className="mb-3">
-  <label htmlFor="cost" className="form-label">Cost</label>
-  <input type="text" className="form-control" value={cost} onChange={(e) => setCost(e.target.value)} ></input>
+  <label htmlFor="address" className="form-label">Is the newsletter free</label>
+<button type="button" className="btn btn-primary" onClick={() => {setIsfree(!isfree); }}>{(isfree)? "True":"False"}</button>
+</div>
+<div className="mb-3">
+  <label htmlFor="address" className="form-label">Is the newsletter weekly</label>
+<button type="button" className="btn btn-primary" onClick={() => {setWeekly(!isWeekly); }}>{(isWeekly)? "True":"False"}</button>
+</div>
+<div className="mb-3">
+  <label htmlFor="address" className="form-label">Is the newsletter monthly</label>
+<button type="button" className="btn btn-primary" onClick={() => {setIsMonthly(!isMonthly); }}>{(isMonthly)? "True":"False"}</button>
+</div>
+<div className="mb-3">
+  <label htmlFor="address" className="form-label">Is the newsletter free</label>
+<button type="button" className="btn btn-primary" onClick={() => {setIsAnually(!isAnually); }}>{(isAnually)? "True":"False"}</button>
 </div>
 <button type="submit" className="btn btn-primary">Submit</button>
 </form>
