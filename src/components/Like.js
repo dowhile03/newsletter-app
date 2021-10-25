@@ -4,7 +4,7 @@ import { Alert } from "react-bootstrap";
 import Login from "../pages/Login";
 
 
-const Like = ({id,auther,company,imgLink,link,cost}) => {
+const Like = ({id,auther,imgLink,link,name,description}) => {
   const [modalShow, setModalShow] = useState(false);
   const [Ids,setIds] = useState("");
 
@@ -17,20 +17,18 @@ const Like = ({id,auther,company,imgLink,link,cost}) => {
      setIds(id)
        
       }
-  })
+  }) 
   }
-  
-
 
 useEffect(()=>{
   if(Ids !== "") {
-    db.collection("users-data").doc(`${auth.currentUser.uid}`).collection('user-favourite').doc(`${id}`).set({
+    db.collection("user-details").doc(`${auth.currentUser.uid}`).collection('user-favourite').doc(`${id}`).set({
       FavouriteIds : id,
       FavAuther : auther,
-      Favcompany : company,
+      FavName : name,
       FavImgLink : imgLink,
       FavUrlLink : link,
-      FavCost:cost
+      FavDesc:description
     })
     .then(()=>{
       Alert("added to id");
@@ -40,7 +38,7 @@ useEffect(()=>{
     })
   }
     
-},[Ids,auther,company,imgLink,link,cost,id])
+},[Ids,auther,description,imgLink,link,id,name])
  
     return (
         <div className="container">

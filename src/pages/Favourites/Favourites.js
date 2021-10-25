@@ -12,15 +12,16 @@ const Favourites = () => {
   const pageCount = Math.ceil(category.length / userPerPage)
 
   const deleteFav = (id) => {
-    db.collection("users-data")
+    db.collection("user-details")
       .doc(`${auth.currentUser.uid}`)
       .collection("user-favourite")
       .doc(`${id}`)
       .delete();
   };
+  
 
   useEffect(() => {
-    db.collection("users-data")
+    db.collection("user-details")
       .doc(`${auth.currentUser.uid}`)
       .collection("user-favourite")
       .onSnapshot((snapshot) => {
@@ -63,13 +64,13 @@ const Favourites = () => {
             <div className="cards-list">
               <Link
                 style={{ textDecoration: "none" }}
-                to={`${item.catItem.FavUrlLink}`}
+                to={"cnx"}
               >
                 <div className="card 1">
                   <div className="card_image">
                     {" "}
                     <img
-                      src={img}
+                      src={item.catItem.FavImgLink}
                       width="100%"
                       height="100%"
                       alt="categoryImg"
@@ -77,7 +78,7 @@ const Favourites = () => {
                   </div>
                   <div className="card_title title-white">
                     <p style={{ background: "black",fontSize:"1.4rem" }}>
-                      {item.catItem.Favcompany} by - {item.catItem.FavAuther}
+                      {item.catItem.FavName} by - {item.catItem.FavAuther}
                     </p>
                   </div>
                 </div>

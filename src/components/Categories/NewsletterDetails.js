@@ -20,7 +20,7 @@ const NewsletterDetails = () => {
           snapshot.data()
          );
       });
-  }, [params.newsletterId]);
+  }, [params.newsletterId,params.categoryId]);
 console.log(newsletter);
 
 
@@ -55,9 +55,9 @@ console.log(newsletter);
       <div className="text-white container">
         <h1>{newsletter.newsletterName}</h1>
         <h5>- {newsletter.auther}</h5>
-        <a className="btn btn-success">
-         <Link to={newsletter.link}> Subscribe </Link> <i className="fa fa-share"></i>
-        </a>
+        <button className="btn btn-success">
+         <a rel="noopener noreferrer" target="_blank" style={{textDecoration:"none",color:"white"}} href={newsletter.link}> Subscribe </a> <i className="fa fa-share"></i>
+        </button>
         <br />
         <div className="pt-4">
           { (newsletter.isWeekly) && <span className="badge bg-danger m-2">🗓️Sent weekly</span> }
@@ -91,19 +91,19 @@ console.log(newsletter);
         >
           <h3>Discussions 😊</h3>
           <form>
-            <div class="form-row align-items-center">
-              <div class="col-auto">
+            <div className="form-row align-items-center">
+              <div className="col-auto">
                 <input
                   type="text"
-                  class="form-control mb-2"
+                  className="form-control mb-2"
                   id="inlineFormInput"
                   placeholder="Any comments..."
                 />
               </div>
             </div>
 
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-2">
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary mb-2">
                 Submit
               </button>
             </div>
@@ -116,19 +116,19 @@ console.log(newsletter);
             inbox. 😊
           </h3>
           <form>
-            <div class="form-row align-items-center">
-              <div class="col-auto">
+            <div className="form-row align-items-center">
+              <div className="col-auto">
                 <input
                   type="text"
-                  class="form-control mb-2"
+                  className="form-control mb-2"
                   id="inlineFormInput"
                   placeholder="Email"
                 />
               </div>
             </div>
 
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary mb-2">
+            <div className="col-auto">
+              <button type="submit" className="btn btn-primary mb-2">
                 Submit
               </button>
             </div>

@@ -58,17 +58,17 @@ const CategoryList = () => {
         <Like
                 id={letter.id}
                 auther={letter.newsletter.auther}
-                company={letter.newsletter.company}
+                description={letter.newsletter.description}
                 imgLink={letter.newsletter.img_link}
                 link={letter.newsletter.link}
-                cost ={letter.newsletter.cost}
+                name={letter.newsletter.newsletterName}
               />
           <div className="cards-list">
           <Link style={{textDecoration:"none"}} to={`/${params.categoryId}/${params.category}/${letter.id}/moredetails`}>
           <div className="card 1">
             <div className="card_image"> <img src={letter.newsletter.img_link} alt="newletterImg" /> </div>
             <div className="card_title title-white">
-            <p style={{background:"black",fontSize:'1.4rem'}}>{letter.newsletter.company} by- {letter.newsletter.auther} 
+            <p style={{background:"black",fontSize:'1.4rem'}}>{letter.newsletter.newsletterName} by- {letter.newsletter.auther} 
            
             </p>
             </div>

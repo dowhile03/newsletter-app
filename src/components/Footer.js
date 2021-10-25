@@ -11,7 +11,7 @@ const Footer = () => {
     
     </div>
     <div className="text-center text-white mt-5">
-    <span style={{color:"orange"}}>Follow the Founders</span>  on <i className="fab fa-twitter"></i>: <a target="_blank" href="https://twitter.com/thekartikey11">@thekartikey11</a>&nbsp;<a target="_blank" href="#">@vipulsharma</a><br /><br />
+    <span style={{color:"orange"}}>Follow the Founders</span>  on <i className="fab fa-twitter"></i>: <a rel="noreferrer" target="_blank" href="https://twitter.com/thekartikey11">@thekartikey11</a>&nbsp;<a target="_blank" rel="noreferrer" href="https://twitter.com/sharmavipul9756">@vipulsharma</a><br /><br />
     <span className="text-white">Copyright &copy; <span style={{color:"orange"}}>Newsletter</span> App</span>
     </div>
     

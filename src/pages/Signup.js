@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { auth, db } from "../Firebase";
-import { useHistory } from "react-router-dom";
 import { Modal, Button, Form } from "react-bootstrap";
 const Signup1 = (props) => {
-  let history = useHistory();
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -20,9 +18,25 @@ const Signup1 = (props) => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
+
           if(userCredential!= null) {
-            userCredential.sendEmailVerification();
-            alert("Verification email sent");
+            console.log(userCredential);
+            auth.currentUser.updateProfile({
+              displayName: username
+          }).then(function () {
+              console.log("Updated");
+          })
+          .catch(err => {console.log(err)});
+            userCredential.sendEmailVerification().then(() => {
+              db.collection("user-details").doc(`${userCredential.uid}`).set({
+                Email: email,
+                username:username
+            }).then(() => {
+              alert("Data added");
+            })
+            alert("Verification email sent"); 
+            })
+          
           }
          
         })
