@@ -16,13 +16,12 @@ const NewsletterDetails = () => {
       .collection("newletter")
       .doc(`${params.newsletterId}`)
       .onSnapshot((snapshot) => {
-        setNewsletter({
-         data:snapshot.data(),
-         id: snapshot.id
-         } );
+        setNewsletter(
+          snapshot.data()
+         );
       });
-  }, [params.categoryId]);
-console.log(newsletter.data);
+  }, [params.newsletterId]);
+console.log(newsletter);
 
 
   return (
@@ -54,25 +53,25 @@ console.log(newsletter.data);
       <hr className="mx-auto" style={{ color: "white", width: "50%" }} />
       <br />
       <div className="text-white container">
-        <h1>{newsletter.data.newsletterName}</h1>
-        <h5>- {newsletter.data.auther}</h5>
+        <h1>{newsletter.newsletterName}</h1>
+        <h5>- {newsletter.auther}</h5>
         <a className="btn btn-success">
-         <Link to={newsletter.data.link}> Subscribe </Link> <i className="fa fa-share"></i>
+         <Link to={newsletter.link}> Subscribe </Link> <i className="fa fa-share"></i>
         </a>
         <br />
         <div className="pt-4">
-          { (newsletter.data.isWeekly) && <span className="badge bg-danger m-2">🗓️Sent weekly</span> }
-          { (newsletter.data.isfree) && <span className="badge bg-danger m-2">Free</span> }
-          { (!newsletter.data.isfree) && <span className="badge bg-danger m-2">Paid</span> }
+          { (newsletter.isWeekly) && <span className="badge bg-danger m-2">🗓️Sent weekly</span> }
+          { (newsletter.isfree) && <span className="badge bg-danger m-2">Free</span> }
+          { (!newsletter.isfree) && <span className="badge bg-danger m-2">Paid</span> }
 
-          { (newsletter.data.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
-          { (newsletter.data.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
+          { (newsletter.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
+          { (newsletter.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
 
     
         </div>
         <div className="img-fluid text-center">
           <img
-            src={newsletter.data.img_link}
+            src={newsletter.img_link}
             alt=""
             width="50%"
           />
@@ -84,7 +83,7 @@ console.log(newsletter.data);
           </div>
         </div>
         <div>
-          {newsletter.data.description}
+          {newsletter.description}
         </div>
         <div
           className="text-white mt-5 p-5"
