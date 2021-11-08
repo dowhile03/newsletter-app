@@ -64,7 +64,7 @@ const Favourites = () => {
             <div className="cards-list">
               <Link
                 style={{ textDecoration: "none" }}
-                to={"cnx"}
+                to={`${item.id}/moredetails`}
               >
                 <div className="card 1">
                   <div className="card_image">
