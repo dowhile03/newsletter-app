@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
-import { useParams } from "react-router";
+import { useParams ,useHistory} from "react-router";
 import { db } from "../../Firebase";
 import Footer from "../Footer";
 
 const NewsletterDetails = () => {
 
   const params = useParams();
+  const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
 
   useEffect(() => {
@@ -33,6 +34,8 @@ console.log(newsletter);
         <Link to="/">
           <button className="favBtn mx-2">Home</button>
         </Link>
+  <button onClick={() => history.goBack()} className="favBtn mx-2"><i className="fa fa-backspace"></i></button>
+
         <h1 className="text-white p-3">
           <span style={{ color: "orange" }}></span>Insightful
           <span style={{ color: "orange" }}> Details</span>

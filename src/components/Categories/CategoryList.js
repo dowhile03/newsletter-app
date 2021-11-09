@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams,useHistory } from "react-router-dom";
 import { db } from "../../Firebase";
 import Like from "../Like";
 import Typewriter from 'typewriter-effect'
@@ -7,6 +7,7 @@ import Footer from "../Footer";
 
 const CategoryList = () => {
   const params = useParams();
+  const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const CategoryList = () => {
    
   <div className="container text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
   <Link to="/"><button className="favBtn mx-2">Home</button></Link>
+  <button onClick={() => history.goBack()} className="favBtn mx-2"><i className="fa fa-backspace"></i></button>
   <h1 className="text-white p-3">
     <span style={{ color: "orange" }}></span>Finally here are your 
     <span style={{ color: "orange" }}> Newsletters!</span>
@@ -58,10 +60,14 @@ const CategoryList = () => {
         <Like
                 id={letter.id}
                 auther={letter.newsletter.auther}
-                description={letter.newsletter.description}
-                imgLink={letter.newsletter.img_link}
-                link={letter.newsletter.link}
-                name={letter.newsletter.newsletterName}
+      newsletterName={letter.newsletter.newsletterName}
+      imgLink={letter.newsletter.img_link}
+      linkAddress={letter.newsletter.link}
+      isfree={letter.newsletter.isfree}
+      isMonthly={letter.newsletter.isMonthly}
+      isWeekly={letter.newsletter.isWeekly}
+      isAnually={letter.newsletter.isAnually}
+      description={letter.newsletter.description}
               />
           <div className="cards-list">
           <Link style={{textDecoration:"none"}} to={`/${params.categoryId}/${params.category}/${letter.id}/moredetails`}>

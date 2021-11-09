@@ -42,7 +42,7 @@ const favouriteHandler = () => {
             <span style={{ color: "orange" }}> Newsletters!</span>
           </h1>
           <div className="mx-auto">
-          <Link to="/"><button className="favBtn mx-2">Home</button></Link> <br /> <br />
+          <Link to="/"><button className="favBtn mx-2">Home</button></Link><br /> <br />
           {!auth.currentUser && (
             <div>
             <button className="favBtn mx-2" onClick={() => setModalShow(true)}>Login</button>
@@ -51,10 +51,11 @@ const favouriteHandler = () => {
             
           )}
             <br />
-            <button className="favBtn" onClick={favouriteHandler}>Favourites</button>
-
-            </div>
             
+            <button className="favBtn" onClick={favouriteHandler}>Favourites</button>
+            </div>
+
+                        
            
             </nav>
         <Login show={modalShow} onHide={() => setModalShow(false)} />

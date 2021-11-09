@@ -4,7 +4,7 @@ import { Alert } from "react-bootstrap";
 import Login from "../pages/Login";
 
 
-const Like = ({auther,newsletterName,img_link,link,isfree,isMonthly,isWeekly,isAnually,description}) => {
+const Like = ({id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description}) => {
   const [modalShow, setModalShow] = useState(false);
   const [Ids,setIds] = useState("");
 
@@ -41,7 +41,7 @@ useEffect(()=>{
     })
   }
     
-},[auther,newsletterName,img_link,link,isfree,isMonthly,isWeekly,isAnually,description])
+},[Ids,id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description])
  
     return (
         <div className="container">

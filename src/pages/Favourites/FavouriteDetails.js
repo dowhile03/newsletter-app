@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
-import { useParams } from "react-router";
+import { useParams,useHistory } from "react-router";
 import { db } from "../../Firebase";
 import Footer from "../../components/Footer";
 
@@ -9,6 +9,7 @@ import Footer from "../../components/Footer";
 const FavouriteDetails = () => {
 
   const params = useParams();
+  const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
   useEffect(() => {
     db.collection("user-details")
@@ -29,9 +30,11 @@ console.log(newsletter);
         className="container text-white mx-auto p-5"
         style={{ fontSize: "1rem" }}
       >
-        <Link to="/">
-          <button className="favBtn mx-2">Home</button>
-        </Link>
+      <Link to="/">
+      <button className="favBtn mx-2">Home</button>
+    </Link>
+<button onClick={() => history.goBack()} className="favBtn mx-2"><i className="fa fa-backspace"></i></button>
+      
         <h1 className="text-white p-3">
           <span style={{ color: "orange" }}></span>Insightful
           <span style={{ color: "orange" }}> Details</span>

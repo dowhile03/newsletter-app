@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../Firebase";
-import img from "../../creative-hand.jpg";
-import ReactPaginate from 'react-paginate'
+import ReactPaginate from 'react-paginate';
+import { useHistory } from "react-router";
+
 const Favourites = () => {
+
+  const history = useHistory();
+
   const [category, setCategory] = useState([]);
   const [pageNumber, setPageNumber] = useState([]);
 
@@ -47,6 +51,11 @@ const Favourites = () => {
     <span style={{ color: "orange" }}></span>Your
     <span style={{ color: "orange" }}> Favourites!</span>
   </h1>
+  <Link to="/">
+  <button className="favBtn mx-2">Home</button>
+</Link>
+<button onClick={() => history.goBack()} className="favBtn mx-2"><i className="fa fa-backspace"></i></button>
+
     </nav>
 </section>
       <ul className="row list-unstyled" id="myUL">
@@ -70,7 +79,7 @@ const Favourites = () => {
                   <div className="card_image">
                     {" "}
                     <img
-                      src={item.catItem.FavImgLink}
+                      src={item.catItem.img_link}
                       width="100%"
                       height="100%"
                       alt="categoryImg"
@@ -78,7 +87,7 @@ const Favourites = () => {
                   </div>
                   <div className="card_title title-white">
                     <p style={{ background: "black",fontSize:"1.4rem" }}>
-                      {item.catItem.FavName} by - {item.catItem.FavAuther}
+                      {item.catItem.newsletterName} by - {item.catItem.auther}
                     </p>
                   </div>
                 </div>
