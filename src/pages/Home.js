@@ -3,7 +3,7 @@ import "./Home.css";
 import Typewriter from "typewriter-effect";
 import { Link } from "react-router-dom";
 import { db } from "../Firebase";
-import Search from "../components/Search";
+import Search from "../components/Search/Search";
 import TrendingCards from "../components/TrendingCards";
 import Footer from "../components/Footer"
 
