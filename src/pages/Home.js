@@ -56,7 +56,7 @@ const Home = () => {
       <Link style={{ textDecoration: "none" }} to="/newsletter/categories">
         {" "}
         <p className="text-white">
-          Explore <span style={{ color: "orange  " }}>More</span> ➡{" "}
+          Explore <span style={{ color: "orange  " }}>More</span>
         </p>{" "}
       </Link>
 

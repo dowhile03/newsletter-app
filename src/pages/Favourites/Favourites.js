@@ -11,7 +11,7 @@ const Favourites = () => {
   const [category, setCategory] = useState([]);
   const [pageNumber, setPageNumber] = useState([]);
 
-  const userPerPage = 1;
+  const userPerPage = 6;
   const pageVisited = pageNumber* userPerPage
   const pageCount = Math.ceil(category.length / userPerPage)
 
@@ -52,7 +52,7 @@ const Favourites = () => {
     <span style={{ color: "orange" }}> Favourites!</span>
   </h1>
   <Link to="/">
-  <button className="favBtn mx-2">Home</button>
+  <button className="favBtn mx-2"><i className="fa fa-home"></i></button>
 </Link>
 <button onClick={() => history.goBack()} className="favBtn mx-2"><i className="fa fa-backspace"></i></button>
 
@@ -62,15 +62,11 @@ const Favourites = () => {
         {category.slice(pageVisited,pageVisited+userPerPage).map((item) => (
           <li key={item.id} className="col-sm-4" style={{ marginTop: "30px" }}>
             <button
-              className="btn btn-outline-danger"
+              className="btn btn-outline-danger d-block mx-auto"
               onClick={() => {
                 deleteFav(item.id);
               }}
-            >
-              Remove
-            </button>
-
-            <div className="cards-list">
+            ><i className="fa fa-trash"></i></button><div className="cards-list">
               <Link
                 style={{ textDecoration: "none" }}
                 to={`${item.id}/moredetails`}

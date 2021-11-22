@@ -15,6 +15,7 @@ const AddNewsletter = () => {
     const [isMonthly,setIsMonthly] = useState(false);
     const [isAnually,setIsAnually] = useState(false);
     const [description, setDescription] = useState("");
+    const [addTags, setAddTags] = useState([]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -97,6 +98,9 @@ const AddNewsletter = () => {
 <div className="mb-3">
   <label htmlFor="address" className="form-label">Is the newsletter free</label>
 <button type="button" className="btn btn-primary" onClick={() => {setIsAnually(!isAnually); }}>{(isAnually)? "True":"False"}</button>
+</div>
+<div>
+<input type="text" className="form-control"></input>
 </div>
 <button type="submit" className="btn btn-primary">Submit</button>
 </form>
