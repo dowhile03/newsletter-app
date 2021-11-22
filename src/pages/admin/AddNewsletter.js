@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useHistory, useParams } from 'react-router-dom';
-import Search from '../../components/Search';
+import Search from "../../components/Search/Search" ;
 import { db, auth } from '../../Firebase';
 
 const AddNewsletter = () => {

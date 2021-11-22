@@ -16,7 +16,11 @@ import EditCategory from "./components/Categories/EditCategory";
 import Favourites from "./pages/Favourites/Favourites";
 import NewsletterDetails from "./components/Categories/NewsletterDetails";
 import FavouriteDetails from "./pages/Favourites/FavouriteDetails";
+<<<<<<< HEAD
 import TrendingDetails from "./components/TrendingDetails";
+=======
+import SearchResultPage from "./components/Search/SearchResultPage";
+>>>>>>> 9f64139bfe64b5214b538d1adef662889a2ff1f3
 
 
 
@@ -33,6 +37,8 @@ const Routes = () => {
     <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     <Route path="/newsletter/categories/:userId/:newsletterId/moredetails" exact component={FavouriteDetails}/>
 <Route  path="/:newsletterId/trendingdetails" exact component={TrendingDetails}/>
+    <Route path="/search" exact component={SearchResultPage}/>
+
     
     <AuthProvider>
     
