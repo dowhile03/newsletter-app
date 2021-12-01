@@ -68,6 +68,10 @@ const CategoryList = () => {
       isWeekly={letter.newsletter.isWeekly}
       isAnually={letter.newsletter.isAnually}
       description={letter.newsletter.description}
+      tag1={letter.newsletter.tag1}
+      tag2={letter.newsletter.tag2}
+      tag3={letter.newsletter.tag3}
+
               />
           <div className="cards-list">
           <Link style={{textDecoration:"none"}} to={`/${params.categoryId}/${params.category}/${letter.id}/moredetails`}>

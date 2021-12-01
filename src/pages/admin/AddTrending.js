@@ -13,6 +13,9 @@ const AddTrending = () => {
   const [isMonthly,setIsMonthly] = useState(false);
   const [isAnually,setIsAnually] = useState(false);
   const [description, setDescription] = useState("");
+  const [tag1, setTag1] = useState("");
+  const [tag2, setTag2] = useState("");
+  const [tag3, setTag3] = useState("");
 
 
     const submitHandler = (e) => {
@@ -28,14 +31,20 @@ const AddTrending = () => {
           isMonthly:isMonthly,
           isWeekly:isWeekly,
           isAnually:isAnually,
-          description: description
+          description: description,
+          tag1:tag1,
+          tag2:tag2,
+          tag3:tag3
         })
         .then(() =>{ alert("done!")
         setAuther("");
         setNewsLetterName("");
         setImgLink("");
         setLinkAddress("");
-        setDescription("")
+        setDescription("");
+        setTag1("");
+        setTag2("");
+        setTag3("");
     })
         .catch(error => alert(error));
     }
@@ -74,6 +83,18 @@ const AddTrending = () => {
 <div className="mb-3">
   <label htmlFor="color" className="form-label">Image Link</label>
   <input type="text" className="form-control" value={imgLink} onChange={(e) => setImgLink(e.target.value)}></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="color" className="form-label">Tag 1</label>
+  <input type="text" className="form-control" value={tag1} onChange={(e) => setTag1(e.target.value)}></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="color" className="form-label">Tag 2</label>
+  <input type="text" className="form-control" value={tag2} onChange={(e) => setTag2(e.target.value)}></input>
+</div>
+<div className="mb-3">
+  <label htmlFor="color" className="form-label">Tag 3</label>
+  <input type="text" className="form-control" value={tag3} onChange={(e) => setTag3(e.target.value)}></input>
 </div>
 <div className="mb-3">
   <label htmlFor="address" className="form-label">link to the blog</label>

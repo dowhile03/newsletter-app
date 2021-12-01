@@ -27,13 +27,13 @@ const Routes = () => {
     <BrowserRouter>
     <Switch>
     <Route path="/" exact component={Home} />
+    <Route  path="/:newsletterId/trendingdetails/" exact component={TrendingDetails}/>
     <Route path="/forgetpassword" exact component={ForgetPassword} />
     <Route path="/Admin" exact component={Admin} />
     <Route path="/newsletter/categories" exact component = {Hero} />
     <Route path="/:categoryId/:category" exact component={CategoryList}/>
     <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     <Route path="/newsletter/categories/:userId/:newsletterId/moredetails" exact component={FavouriteDetails}/>
-<Route  path="/:newsletterId/trendingdetails" exact component={TrendingDetails}/>
     <Route path="/search" exact component={SearchResultPage}/>
 
     

@@ -4,7 +4,7 @@ import { Alert } from "react-bootstrap";
 import Login from "../pages/Login";
 
 
-const Like = ({id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description}) => {
+const Like = ({id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description,tag1,tag2,tag3}) => {
   const [modalShow, setModalShow] = useState(false);
   const [Ids,setIds] = useState("");
 
@@ -31,7 +31,10 @@ useEffect(()=>{
       isMonthly:isMonthly,
       isWeekly:isWeekly,
       isAnually:isAnually,
-      description: description
+      description: description,
+      tag1:tag1,
+      tag2:tag2,
+      tag3:tag3
     })
     .then(()=>{
       Alert("added to id");

@@ -70,7 +70,9 @@ console.log(newsletter);
           { (newsletter.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
           { (newsletter.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
 
-    
+          <span className="badge bg-danger m-2">{newsletter.tag1}</span>
+          <span className="badge bg-danger m-2">{newsletter.tag2}</span>
+          <span className="badge bg-danger m-2">{newsletter.tag3}</span>
         </div>
         <div className="img-fluid text-center">
           <img

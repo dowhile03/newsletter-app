@@ -11,17 +11,14 @@ const TrendingDetails = () => {
   const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
 
-  
-
   useEffect(() => {
     db.collection("trending-newsletters").doc(params.newsletterId).onSnapshot((snapshot) => {
         setNewsletter(
             snapshot.data()
            );
         })
-  }, [params.newsletterId]);
-
-  console.log(params.newsletterId);
+  },[params.newsletterId]);
+  
   return (
     <div>
       <div
@@ -66,7 +63,9 @@ const TrendingDetails = () => {
 
           { (newsletter.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
           { (newsletter.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
-
+          <span className="badge bg-danger m-2">{newsletter.tag1}</span>
+          <span className="badge bg-danger m-2">{newsletter.tag2}</span>
+          <span className="badge bg-danger m-2">{newsletter.tag3}</span>
     
         </div>
         <div className="img-fluid text-center">

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { db } from "../Firebase";
 import "./TrendingCards.css";
 
 
 const TrendingCards = () => {
-const params = useParams()
   const [trendingCards, setTrendingCards] = useState([]);
-
   useEffect(() => {
     db.collection("trending-newsletters").onSnapshot((snapshot) => {
       setTrendingCards(
@@ -26,7 +23,7 @@ const params = useParams()
     {trendingCards.map((item) => (
       <li className="col-sm-4" key={item.id}>
       <div className="cards-list">
-      <Link style={{textDecoration:"none"}} to={`/${item.id}/trendingdetails`}>
+      <Link style={{textDecoration:"none"}} to={`/${item.id}/trendingdetails/`}>
         <div className="card 1">
           <div className="card_image">
             {" "}
