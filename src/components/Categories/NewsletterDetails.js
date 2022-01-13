@@ -68,7 +68,7 @@ console.log(newsletter);
           { (!newsletter.isfree) && <span className="badge bg-danger m-2">Paid</span> }
 
           { (newsletter.isMonthly) && <span className="badge bg-danger m-2">🗓️Sent Monthly</span> }
-          { (newsletter.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Anually</span> }
+          { (newsletter.isAnually) && <span className="badge bg-danger m-2">🗓️Sent Daily</span> }
 
           <span className="badge bg-danger m-2">{newsletter.tag1}</span>
           <span className="badge bg-danger m-2">{newsletter.tag2}</span>

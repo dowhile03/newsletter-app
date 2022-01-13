@@ -116,7 +116,7 @@ const AddNewsletter = () => {
 <button type="button" className="btn btn-primary" onClick={() => {setIsMonthly(!isMonthly); }}>{(isMonthly)? "True":"False"}</button>
 </div>
 <div className="mb-3">
-  <label htmlFor="address" className="form-label">Is the newsletter free</label>
+  <label htmlFor="address" className="form-label">Is the newsletter Daily</label>
 <button type="button" className="btn btn-primary" onClick={() => {setIsAnually(!isAnually); }}>{(isAnually)? "True":"False"}</button>
 </div>
 <div>
