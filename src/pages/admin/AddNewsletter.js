@@ -120,7 +120,6 @@ const AddNewsletter = () => {
 <button type="button" className="btn btn-primary" onClick={() => {setIsAnually(!isAnually); }}>{(isAnually)? "True":"False"}</button>
 </div>
 <div>
-<input type="text" className="form-control"></input>
 </div>
 <button type="submit" className="btn btn-primary">Submit</button>
 </form>
