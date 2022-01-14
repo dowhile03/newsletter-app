@@ -69,18 +69,24 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   margin: 8px;
   border-radius: 15px;
   background-color: orange;
-
+  text-decoration: none;
   cursor: pointer;
+  color: black;
 }
 
 .paginationBttns a:hover {
-  background-color: rgb(255, 194, 80);
-  color: black;
+  background-color: transparent;
+  border: 1px solid orange;
+  color: white;
+  transition: ease 0.5s;
 }
 
 .paginationActive a {
   color: white;
-  background-color: orange;
+  background-color: transparent;
+  border: 1px solid orange;
+  transition: ease 0.5s;
+
 }
 
 .paginationDisabled a {

@@ -80,16 +80,19 @@ console.log(newsletter);
             alt=""
             width="50%"
           />
-          <div className="pt-4">
-            <span className="badge bg-secondary m-2">tag1</span>
-            <span className="badge bg-secondary m-2">tag2</span>
-            <span className="badge bg-secondary m-2">tag3</span>
-            <span className="badge bg-secondary m-2">tag4</span>
-          </div>
+        
         </div>
+        <br /><br />
         <div>
           {newsletter.description}
         </div>
+        <br /><br /><br />
+        <h4 className="mt-5 pt-5" style={{fontFamily:"revert",fontStyle:"italic",fontWeight:"bolder"}}>
+        Hi👋, <br />
+Thank you for interest in us. We appreciate your interest.
+We will do our best to notify you about interesting and useful resources. <br />
+May we kindly drop your email below!
+        </h4>
         <div
           className="text-white mt-5 p-5"
           style={{ border: "1px solid gray" }}

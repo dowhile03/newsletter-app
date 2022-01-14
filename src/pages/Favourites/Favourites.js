@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { db, auth } from "../../Firebase";
 import ReactPaginate from 'react-paginate';
 import { useHistory } from "react-router";
+import "../Hero.css" 
 
 const Favourites = () => {
 
@@ -62,7 +63,7 @@ const Favourites = () => {
         {category.slice(pageVisited,pageVisited+userPerPage).map((item) => (
           <li key={item.id} className="col-sm-4" style={{ marginTop: "30px" }}>
             <button
-              className="btn btn-outline-danger d-block mx-auto"
+              className="btn btn-outline-danger favBtn d-block mx-auto"
               onClick={() => {
                 deleteFav(item.id);
               }}

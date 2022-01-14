@@ -58,8 +58,8 @@
       font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
       font-size: 1em;
       font-weight: bold;
-      /* border-bottom: white solid 2px; */
-      transition: 0.3s;;
+      transition: 0.3s;
+      border-bottom: white solid 2px;
   }
   
   .searchbar::placeholder {

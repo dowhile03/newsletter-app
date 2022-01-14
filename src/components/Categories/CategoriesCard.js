@@ -132,9 +132,9 @@ const CategoriesCard = () => {
           ))}
         </ul>
       </div>
-      <div style={{textDecoration:"none"}}>
+      <div>
+      
       <ReactPaginate
-    
                     previousLabel={"Previous"}
                     nextLabel={"Next"}
                     pageCount={pageCount}

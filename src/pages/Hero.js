@@ -41,10 +41,12 @@ const favouriteHandler = () => {
             <span style={{ color: "orange" }}></span>Welcome to the world of
             <span style={{ color: "orange" }}> Newsletters!</span>
           </h1>
-          <div className="mx-auto">
+          <div className="" style={{padding:"2vw"}}>
+          <div>
           <Link to="/"><button className="favBtn mx-2">Home</button></Link><br /> <br />
+          </div>
           {!auth.currentUser && (
-            <div>
+            <div  style={{float:"right"}}>
             <button className="favBtn mx-2" onClick={() => setModalShow(true)}>Login</button>
             <button className="favBtn mx-2" onClick={() => setSignUp(true)}>Signup</button>
             </div>

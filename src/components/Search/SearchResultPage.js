@@ -20,6 +20,10 @@ const SearchResultPage = () => {
 
     return (
         <div>
+        <div className="text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
+        <h1>Find your<span style={{color:"orange"}}> Category!</span></h1>
+          
+          </div>
         <form className="mt-4 mb-4 mx-auto">
         <div className="container1">
   
@@ -38,12 +42,7 @@ const SearchResultPage = () => {
  
   
   </div>
-  <div className="text-center text-white">
-  <p>What people are searching...</p>
-  <button className="favBtn">blogging</button>
-  <button className="favBtn m-5">Technology</button>
-  <button className="favBtn">finance</button>
-  </div>
+ 
   
   <div className="container bootstrap snippets bootdeys">
   <ul className="row list-unstyled" id="myUL">
