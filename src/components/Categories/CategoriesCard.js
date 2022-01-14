@@ -132,7 +132,7 @@ const CategoriesCard = () => {
           ))}
         </ul>
       </div>
-      <div style={{color:"yellow"}}>
+      <div style={{textDecoration:"none"}}>
       <ReactPaginate
     
                     previousLabel={"Previous"}
