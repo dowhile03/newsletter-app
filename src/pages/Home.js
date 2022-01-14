@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="container">
     <div className="text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
-    <h1>Newsletter <span style={{color:"orange"}}>App</span></h1>
+    <h1>Spam <span style={{color:"orange"}}>Folder</span></h1>
         <Typewriter
           options={{
             strings: [
