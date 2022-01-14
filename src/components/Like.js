@@ -44,7 +44,7 @@ useEffect(()=>{
     })
   }
     
-},[Ids,id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description])
+},[Ids,id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description,tag1,tag2,tag3])
  
     return (
         <div className="container">
@@ -52,7 +52,7 @@ useEffect(()=>{
           <div
             className="container"
           >
-          <button className="btn favBtn" onClick={addToFav}>Add to Fav</button>
+          <button className="btn favBtn" onClick={addToFav}>💖</button>
           </div>
         </center>
         <Login show={modalShow} onHide={() => setModalShow(false)} />

@@ -1,15 +1,15 @@
 {
-    "short_name":"yourNews",
-    "name":"Newsletter App",
+    "short_name":"spamfolder",
+    "name":"Spam Folder",
     "icons":[
         {
             "src":"/images/logo.png",
             "type":"image/png",
-            "sizes":"1024x1024",
+            "sizes":"750x750",
             "purpose": "any maskable"
         }
     ],
-    "start_url":".",
+    "start_url":"/",
     "display":"standalone",
     "theme_color":"#000000",
     "background_color":"#ffffff"
