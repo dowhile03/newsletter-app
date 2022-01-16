@@ -6,8 +6,8 @@ const Footer = () => {
     <br /> <br /> <br />
     <hr style={{color:"white"}} />
     <div>
-    <a target="_blank" href="https://www.privacypolicygenerator.info/live.php?token=bllJv5apfdXnh9cMVC4pLanSVm6KWY9z"><button className="col-md-6 " style={{background:"transparent",color:"white",border:"none",textAlign:"right"}}>Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
-    <a target="_blank" href="https://www.termsofusegenerator.net/live.php?token=4EEmmwJkQlkwZcVqFTpGEjttqtWRCOI8"><button className="col-md-6" style={{background:"transparent",color:"white",border:"none",textAlign:"left"}}>Terms of use</button></a>
+    <a rel="noreferrer" target="_blank" href="https://www.privacypolicygenerator.info/live.php?token=bllJv5apfdXnh9cMVC4pLanSVm6KWY9z"><button className="col-md-6 " style={{background:"transparent",color:"white",border:"none",textAlign:"right"}}>Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+    <a rel="noreferrer"  target="_blank" href="https://www.termsofusegenerator.net/live.php?token=4EEmmwJkQlkwZcVqFTpGEjttqtWRCOI8"><button className="col-md-6" style={{background:"transparent",color:"white",border:"none",textAlign:"left"}}>Terms of use</button></a>
     
     </div>
     <div className="text-center text-white mt-5">
