@@ -4,12 +4,15 @@ import Typewriter from "typewriter-effect";
 import { useParams ,useHistory} from "react-router";
 import { db } from "../Firebase";
 import Footer from "./Footer";
+import swal from 'sweetalert';
+
 
 const TrendingDetails = () => {
 
   const params = useParams();
   const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
+  const [subscribeEmail, setSubscribeEmail] = useState("");
 
   useEffect(() => {
     db.collection("trending-newsletters").doc(params.newsletterId).onSnapshot((snapshot) => {
@@ -18,6 +21,25 @@ const TrendingDetails = () => {
            );
         })
   },[params.newsletterId]);
+
+  
+const newsletterEmailDetails = (e) => {
+  e.preventDefault();
+     db.collection("EmailSubscribers").add({
+      email : subscribeEmail
+     })
+     .then(() => {
+      swal({
+        title: "Spam Folder",
+        text: "Thanks for being our subscriber!",
+        icon: "success",
+        dangerMode: false,
+      })
+     })
+     .catch((e) => {
+      swal("Oops!", "Something went wrong!", "error");
+     })
+}
   
   return (
     <div>
@@ -115,13 +137,15 @@ May we kindly drop your email below!
         <div className="text-dark mt-5 p-5" style={{ background: "white" }}>
           <h3>
             Subscribe to our own newsletter and get top newsletters in your
-            inbox. 😊
+            inbox.😊
           </h3>
-          <form>
+          <form onSubmit={newsletterEmailDetails}>
             <div className="form-row align-items-center">
               <div className="col-auto">
                 <input
-                  type="text"
+                value={subscribeEmail}
+                onChange={(e) => setSubscribeEmail(e.target.value)}
+                  type="email"
                   className="form-control mb-2"
                   id="inlineFormInput"
                   placeholder="Email"

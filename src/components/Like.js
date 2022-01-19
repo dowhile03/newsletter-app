@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../Firebase";
-import { Alert } from "react-bootstrap";
 import Login from "../pages/Login";
-
+import swal from "sweetalert";
 
 const Like = ({id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description,tag1,tag2,tag3}) => {
   const [modalShow, setModalShow] = useState(false);
@@ -37,15 +36,20 @@ useEffect(()=>{
       tag3:tag3
     })
     .then(()=>{
-      Alert("added to id");
+      swal({
+        title: "Hey!",
+        text: "Newsletter added to your favourite",
+        icon: "success",
+        dangerMode: false,
+      })
     })
     .catch(()=>{
-      alert("You have already added this to your favourites");
+      swal("Oops!", "Something went wrong!", "error");
     })
-  }
+  } 
     
 },[Ids,id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description,tag1,tag2,tag3])
- 
+    
     return (
         <div className="container">
         <center>

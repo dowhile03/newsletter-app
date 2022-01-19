@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { auth } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
+import swal from "sweetalert";
+
 const Login1 = (props) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
@@ -18,12 +20,22 @@ const Login1 = (props) => {
         if (isVerified) {
           history.push(`/newsletter/categories/${uid}`);
         } else {
-          alert("Your Email is not verified");
+          swal({
+            title: "Notice!!",
+            text: "Your Email is not verified, Please verify it to login your account.",
+            icon: "warning",
+            dangerMode: true,
+          })
         }
       })
       .catch((error) => {
         var errorMessage = error.message;
-        alert(errorMessage);
+        swal({
+          title: "Error!!",
+          text: "Some Unknown Error occurred!",
+          icon: "warning",
+          dangerMode: true,
+        })
       });
   };
 

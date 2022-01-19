@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth, db } from "../Firebase";
 import { Modal, Button, Form } from "react-bootstrap";
+import swal from "sweetalert";
+
 const Signup1 = (props) => {
 
   const [username, setUsername] = useState("");
@@ -11,7 +13,12 @@ const Signup1 = (props) => {
   const handleChange = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Password do not match");
+      swal({
+        title: "Error!!",
+        text: "Passwords do not match.",
+        icon: "warning",
+        dangerMode: true,
+      })
       setPassword("");
       setConfirmPassword("");
     } else {
@@ -20,11 +27,11 @@ const Signup1 = (props) => {
         .then((userCredential) => {
 
           if(userCredential!= null) {
-            console.log(userCredential);
+            // console.log(userCredential);
             auth.currentUser.updateProfile({
               displayName: username
           }).then(function () {
-              console.log("Updated");
+              // console.log("Updated");
           })
           .catch(err => {console.log(err)});
             userCredential.sendEmailVerification().then(() => {
@@ -32,9 +39,14 @@ const Signup1 = (props) => {
                 Email: email,
                 username:username
             }).then(() => {
-              alert("Data added");
+              swal({
+                title: "Congratulations",
+                text: "You have been added to our community of newsletter readers!",
+                icon: "success",
+                dangerMode: false,
+              })
             })
-            alert("Verification email sent"); 
+            alert("Verification Email Sent, Please verify to login!");
             })
           
           }
