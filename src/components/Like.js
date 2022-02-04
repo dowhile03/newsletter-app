@@ -56,7 +56,7 @@ useEffect(()=>{
           <div
             className="container"
           >
-          <button className="btn favBtn" onClick={addToFav}>💖</button>
+          <button className="btn favBtn" onClick={addToFav}><i class="fas fa-heart"></i></button>
           </div>
         </center>
         <Login show={modalShow} onHide={() => setModalShow(false)} />

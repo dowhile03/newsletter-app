@@ -3,12 +3,13 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { auth } from "../Firebase";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
+import Signup from './Signup';
 
 const Login1 = (props) => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [signup, setSignUp] = useState(false);
   const handleChange = (e) => {
     e.preventDefault();
     auth
@@ -29,7 +30,6 @@ const Login1 = (props) => {
         }
       })
       .catch((error) => {
-        var errorMessage = error.message;
         swal({
           title: "Error!!",
           text: "Some Unknown Error occurred!",
@@ -40,6 +40,7 @@ const Login1 = (props) => {
   };
 
   return (
+    <div>
     <Modal
       {...props}
       size="lg"
@@ -75,16 +76,21 @@ const Login1 = (props) => {
           <Button variant="warning" type="submit">
             Submit
           </Button>
+        </Form>
+
           <div className="container mt-3 mx-auto">
+              <h5>Don't have an account yet?<button className="favBtn mx-2" onClick={() =>setSignUp(true)}>Signup</button>
+</h5>
               <h5><Link to="/forgetpassword" style={{textDecoration: "none"}}>Forget Password</Link></h5>
             
           </div>
-        </Form>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="warning" onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Modal>
+    <Signup show={signup} onHide={() => setSignUp(false)} />
+    </div>
   );
 };
 
