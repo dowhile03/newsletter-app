@@ -24,8 +24,8 @@ const Home = () => {
   return (
     <div className="container">
     <div className="text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
-    <h1>Spam <span style={{color:"orange"}}>Folder</span></h1>
     <div align='right' className="d-block"><p>Visitors</p><img src='http://www.hit-counts.com/counter.php?t=MTQ2MDg0Ng==' border='0' alt='logo designers'/></div>
+    <h1>Spam <span style={{color:"orange"}}>Folder</span><sup style={{borderRadius:"50px",padding:"0.5rem", background:"red",fontSize:"1rem",marginLeft:"0.2rem"}}>BETA</sup></h1>
 
         <Typewriter
           options={{
@@ -57,7 +57,7 @@ const Home = () => {
       <Link style={{ textDecoration: "none" }} to="/newsletter/categories">
         {" "}
         <p className="text-white">
-          Explore <span style={{ color: "orange  " }}>More</span>
+          Explore <span style={{ color: "orange  " }}>More categories here 👆👆</span>
         </p>{" "}
       </Link>
 
