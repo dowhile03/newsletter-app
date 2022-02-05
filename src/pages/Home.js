@@ -25,6 +25,8 @@ const Home = () => {
     <div className="container">
     <div className="text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
     <h1>Spam <span style={{color:"orange"}}>Folder</span></h1>
+    <div align='right' className="d-block"><p>Visitors</p><img src='http://www.hit-counts.com/counter.php?t=MTQ2MDg0Ng==' border='0' alt='logo designers'/></div>
+
         <Typewriter
           options={{
             strings: [
@@ -37,7 +39,6 @@ const Home = () => {
           }}
         />
       </div>
-
     <Search/>
 
       <div className="horizontal_slider">
