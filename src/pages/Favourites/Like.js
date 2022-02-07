@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { auth, db } from "../Firebase";
-import Login from "../pages/Login";
+import { auth, db } from "../../Firebase";
+import Login from "../Authentication/Login";
 import swal from "sweetalert";
 
 const Like = ({id,auther,newsletterName,imgLink,linkAddress,isfree,isMonthly,isWeekly,isAnually,description,tag1,tag2,tag3}) => {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
 import { useParams ,useHistory} from "react-router";
-import { db } from "../Firebase";
-import Footer from "./Footer";
+import { db } from "../../Firebase";
+import Footer from "../Footer";
 import swal from 'sweetalert';
 
 

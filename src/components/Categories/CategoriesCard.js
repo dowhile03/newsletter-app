@@ -3,7 +3,7 @@ import { auth, db } from "../../Firebase";
 import { Link, useHistory } from "react-router-dom";
 import Search from "../Search/Search";
 import "../TrendingCards.css";
-import Login from "../../pages/Login";
+import Login from "../../pages/Authentication/Login";
 import ReactPaginate from 'react-paginate'
 
 const CategoriesCard = () => {

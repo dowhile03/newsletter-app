@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, db } from "../Firebase";
+import { auth, db } from "../../Firebase";
 import { Modal, Button, Form } from "react-bootstrap";
 import swal from "sweetalert";
 

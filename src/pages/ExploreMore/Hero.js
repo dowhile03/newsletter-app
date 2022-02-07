@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
 import './Hero.css';
-import CategoriesCard from "../components/Categories/CategoriesCard"
-import Login from './Login';
-import Signup from './Signup';
-import { auth } from '../Firebase';
+import CategoriesCard from "../../components/Categories/CategoriesCard"
+import Login from '../Authentication/Login';
+import Signup from '../Authentication/Signup';
+import { auth } from '../../Firebase';
 import { Link, useHistory } from 'react-router-dom';
-import Footer from "../components/Footer"
+import Footer from "../../components/Footer"
 
 const Hero = () => {   
 const [modalShow, setModalShow] = useState(false);

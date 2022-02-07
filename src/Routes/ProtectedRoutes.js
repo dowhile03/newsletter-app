@@ -1,21 +1,20 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { auth } from "./Firebase";
+import { auth } from "../Firebase";
 
-function AdminProtectedRoute({ children, ...rest }) {
+function ProtectedRoutes({ children, ...rest }) {
 
   const user = auth.currentUser;
-  
   return (
     <Route
       {...rest}
       render={({ location }) => {
-        if (user.email === "kartikey110813@gmail.com") {
+        if (user) {
           return children;
         } else {
           if(!localStorage.getItem('user')){
           return (
-            <Redirect to={{ pathname: "/login", state: { from: location } }} />
+            <Redirect to={{ pathname: "/", state: { from: location } }} />
           )
           } else{
             return children
@@ -26,4 +25,4 @@ function AdminProtectedRoute({ children, ...rest }) {
   );
 }
 
-export default AdminProtectedRoute;
+export default ProtectedRoutes;

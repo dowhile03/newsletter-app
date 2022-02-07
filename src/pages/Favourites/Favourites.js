@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { db, auth } from "../../Firebase";
 import ReactPaginate from 'react-paginate';
 import { useHistory } from "react-router";
-import "../Hero.css" 
+import "../Home/Home.css" 
 
 const Favourites = () => {
 
