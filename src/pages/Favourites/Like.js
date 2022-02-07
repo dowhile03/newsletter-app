@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, db } from "../../Firebase";
 import Login from "../Authentication/Login";
 import swal from "sweetalert";
@@ -56,7 +56,7 @@ useEffect(()=>{
           <div
             className="container"
           >
-          <button className="btn favBtn" onClick={addToFav}><i class="fas fa-heart"></i></button>
+          <button className="btn favBtn" onClick={addToFav}><i className="fas fa-heart"></i></button>
           </div>
         </center>
         <Login show={modalShow} onHide={() => setModalShow(false)} />
@@ -65,4 +65,4 @@ useEffect(()=>{
     )
 }
 
-export default Like
+export default Like;
