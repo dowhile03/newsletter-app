@@ -18,6 +18,7 @@ import NewsletterDetails from "../components/Categories/NewsletterDetails";
 import FavouriteDetails from "../pages/Favourites/FavouriteDetails";
 import TrendingDetails from "../components/Trending/TrendingDetails";
 import SearchResultPage from "../components/Search/SearchResultPage";
+import Promote from "../pages/Home/Promote";
 
 
 
@@ -35,10 +36,9 @@ const Routes = () => {
     <Route path="/:categoryId/:category/:newsletterId/moredetails" exact component={NewsletterDetails}/>
     <Route path="/newsletter/categories/:userId/:newsletterId/moredetails" exact component={FavouriteDetails}/>
     <Route path="/search" exact component={SearchResultPage}/>
-
+    <Route path="/promote" exact component={Promote} />
     
     <AuthProvider>
-    
           <ProtectedRoutes path="/newsletter/categories/:uid" exact>
           <Hero/>
           </ProtectedRoutes>

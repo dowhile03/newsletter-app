@@ -20,7 +20,7 @@ const Search = ({placeholder, onChange}) => {
   <i className="fa fa-search"></i>
 </p>
 */}
-<Link to="/search"><button className='btn favBtn'>Search <i className='fa fa-search'></i></button></Link>
+<Link to="/search"><button className='btn favBtn'>Search Categories <i className='fa fa-search'></i></button></Link>
 
 </div>
 </form>

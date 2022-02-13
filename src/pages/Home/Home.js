@@ -25,8 +25,11 @@ const Home = () => {
   return (
     <div className="container">
       <FloatingContact/>
-    <div className="text-white mx-auto p-5" style={{ fontSize: "1rem" }}>
-    <h1>Spam <span style={{color:"orange"}}>Folder</span><sup style={{borderRadius:"50px",padding:"0.5rem", background:"red",fontSize:"1rem",marginLeft:"0.2rem"}}>BETA</sup></h1>
+      <div className="row">
+     
+      
+      <div className="text-white mx-auto p-5 col-md-6" style={{ fontSize: "1rem" }}>
+    <h1>Spam <span style={{color:"orange"}}>Folder</span><sup style={{borderRadius:"50px",padding:"0.2rem", background:"red",fontSize:"0.7rem",marginLeft:"0.2rem"}}>BETA</sup></h1>
 
         <Typewriter
           options={{
@@ -40,6 +43,13 @@ const Home = () => {
           }}
         />
       </div>
+      <div className="text-white mx-auto p-5 col-md-6" style={{textAlign:"right"}}>
+      <Link to="/promote">
+      <button className="favBtn mx-auto">Promote now!</button>
+      </Link>
+      </div>
+      </div>
+      
     <Search/>
 
       <div className="horizontal_slider">
@@ -57,8 +67,8 @@ const Home = () => {
 
       <Link style={{ textDecoration: "none" }} to="/newsletter/categories">
         {" "}
-        <p className="text-white">
-          Explore <span style={{ color: "orange  " }}>More categories here 👆👆</span>
+        <p className="favBtn2 mx-auto text-center">
+          Explore More categories here 👆👆
         </p>{" "}
       </Link>
 

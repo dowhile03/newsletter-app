@@ -90,3 +90,17 @@
       padding-top: 5px;
 
   }
+  .promoteInput{
+      padding: 1rem;
+      background: transparent;
+      border:1px solid white;
+      border-left: 1px solid white;
+      color: orange;
+      width: 50%;
+  }
+
+  .promoteBtn{
+      padding: 1.1rem;
+      background-color: orange;
+      border: none;
+  }
