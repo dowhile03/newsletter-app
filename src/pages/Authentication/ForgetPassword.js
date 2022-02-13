@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import classes from "./Signup.module.css";
-import { auth } from "../Firebase";
+import classes from "../Signup.module.css";
+import { auth } from "../../Firebase";
 import { Link, useHistory } from "react-router-dom";
 
 const ForgetPassword = () => {

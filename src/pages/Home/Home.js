@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Typewriter from "typewriter-effect";
 import { Link } from "react-router-dom";
-import { db } from "../Firebase";
-import Search from "../components/Search/Search";
-import TrendingCards from "../components/TrendingCards";
-import Footer from "../components/Footer"
-import FloatingContact from "../components/FloatingContact/FloatingContact";
+import { db } from "../../Firebase";
+import Search from "../../components/Search/Search";
+import TrendingCards from "../../components/Trending/TrendingCards";
+import Footer from "../../components/Footer"
+import FloatingContact from "../../components/FloatingContact/FloatingContact";
 
 const Home = () => {
   const [category, setCategory] = useState([]);

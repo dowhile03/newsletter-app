@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams,useHistory } from "react-router-dom";
 import { db } from "../../Firebase";
-import Like from "../Like";
+import Like from "../../pages/Favourites/Like";
 import Typewriter from 'typewriter-effect'
 import Footer from "../Footer";
 
-const CategoryList = () => {
+const NewslettersPage = () => {
   const params = useParams();
   const history = useHistory();
   const [newsletter, setNewsletter] = useState([]);
@@ -95,4 +95,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default NewslettersPage;

@@ -13,7 +13,7 @@ const Footer = () => {
     <div className="text-center text-white mt-5">
     <span style={{color:"orange"}}>Made with</span>💖 by : <a rel="noreferrer" target="_blank" href="https://twitter.com/thekartikey11">@thekartikey11<i className="fab fa-twitter"></i></a>&nbsp;<a target="_blank" rel="noreferrer" href="https://twitter.com/sharmavipul9756">@vipulsharma<i className="fab fa-twitter"></i></a><br /><br />
     <a rel="noopener noreferrer" target="_blank" href="https://www.buymeacoffee.com/spamfolder" className="coffee-link">
-    <img alt="Coffee image" src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-2.svg" width="25%" className="coffee-img img-fluid" /></a> <br /><br />
+    <img alt="bmc" src="https://www.buymeacoffee.com/assets/img/guidelines/download-assets-2.svg" width="25%" className="coffee-img img-fluid" /></a> <br /><br />
         <span className="text-white">Copyright &copy; <span style={{color:"orange"}}>Spam fol</span>der 2022</span>
     </div>
     

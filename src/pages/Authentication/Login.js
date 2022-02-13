@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { auth } from "../Firebase";
+import { auth } from "../../Firebase";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
-import Signup from './Signup';
+import Signup from '../Authentication/Signup';
 
 const Login1 = (props) => {
   let history = useHistory();
