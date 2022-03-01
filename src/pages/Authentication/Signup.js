@@ -27,15 +27,15 @@ const Signup1 = (props) => {
         .then((userCredential) => {
 
           if(userCredential!= null) {
-            // console.log(userCredential);
+            console.log(userCredential);
             auth.currentUser.updateProfile({
               displayName: username
           }).then(function () {
               // console.log("Updated");
           })
           .catch(err => {console.log(err)});
-            userCredential.sendEmailVerification().then(() => {
-              db.collection("user-details").doc(`${userCredential.uid}`).set({
+            auth.currentUser.sendEmailVerification().then(() => {
+              db.collection("user-details").doc(`${userCredential.user.uid}`).set({
                 Email: email,
                 username:username
             }).then(() => {

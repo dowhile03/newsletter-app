@@ -16,8 +16,8 @@ const Login1 = (props) => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         var user = userCredential;
-        var uid = user.uid;
-        var isVerified = user.emailVerified;
+        var uid = user.user.uid
+        var isVerified = user.user.emailVerified;
         if (isVerified) {
           history.push(`/newsletter/categories/${uid}`);
         } else {
